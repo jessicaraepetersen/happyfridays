@@ -1,0 +1,491 @@
+{
+  "albums" : {
+    "href" : "https://api.spotify.com/v1/browse/new-releases?offset=0&limit=20",
+    "items" : [ {
+      "album_type" : "single",
+      "available_markets" : [ "CA", "US", "MX" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/7FFMFZHBI4dB2G20zxhtcE"
+      },
+      "href" : "https://api.spotify.com/v1/albums/7FFMFZHBI4dB2G20zxhtcE",
+      "id" : "7FFMFZHBI4dB2G20zxhtcE",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/1b5b28eddf5b15fdb9f58c641c621955e143f097",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/d76a955de59bb4ea446ecd9d4e87a1b2810a29e3",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ca01bb7db86caa0de70a4648f5fe5fccfd400653",
+        "width" : 64
+      } ],
+      "name" : "Carry On",
+      "type" : "album",
+      "uri" : "spotify:album:7FFMFZHBI4dB2G20zxhtcE"
+    }, {
+      "album_type" : "album",
+      "available_markets" : [ "CA", "US", "MX" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/02sEJTj1sye1JaqxqpcSCp"
+      },
+      "href" : "https://api.spotify.com/v1/albums/02sEJTj1sye1JaqxqpcSCp",
+      "id" : "02sEJTj1sye1JaqxqpcSCp",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/5acb2a5b069c2f14f6e7efd5daa9bd340131ca47",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ce0906f04ff38fd21a7ad96a752862dc849f960a",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/d40c7614e6f66521498c960197d44872a38e721a",
+        "width" : 64
+      } ],
+      "name" : "Encore",
+      "type" : "album",
+      "uri" : "spotify:album:02sEJTj1sye1JaqxqpcSCp"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2ClnblNPnYHQKqcYtLEjjm"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2ClnblNPnYHQKqcYtLEjjm",
+      "id" : "2ClnblNPnYHQKqcYtLEjjm",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/b5ddfb01f2c321987f701057012c756843af2216",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/914cd2d62b5b6a2156baf72a5c3306a4519c6854",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/33fdab9558b9fee53f6c44ea2279d5062e1256e8",
+        "width" : 64
+      } ],
+      "name" : "Private Show",
+      "type" : "album",
+      "uri" : "spotify:album:2ClnblNPnYHQKqcYtLEjjm"
+    }, {
+      "album_type" : "album",
+      "available_markets" : [ "CA", "US", "MX" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2QSiy6dksBLC7alEkA19f7"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2QSiy6dksBLC7alEkA19f7",
+      "id" : "2QSiy6dksBLC7alEkA19f7",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/891012bf3a24292ef6de707504cb61124b404619",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/b55dbac9dc7d3447061913af3a632e93bd5e21ae",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/0560b89128464a295f2cbceb1f762927da068432",
+        "width" : 64
+      } ],
+      "name" : "Girl Problems",
+      "type" : "album",
+      "uri" : "spotify:album:2QSiy6dksBLC7alEkA19f7"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/5YyZs1rmz2lSN5LEa16nkP"
+      },
+      "href" : "https://api.spotify.com/v1/albums/5YyZs1rmz2lSN5LEa16nkP",
+      "id" : "5YyZs1rmz2lSN5LEa16nkP",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/36fd5227d31555246bd85b432aa78e996ebe042f",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/679af43d1a1f8feb8cb14ff296805e982e6b4e48",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/8c819bba50acd028e721d2c43c4fc9b7c15c4fd7",
+        "width" : 64
+      } ],
+      "name" : "Spotify Session",
+      "type" : "album",
+      "uri" : "spotify:album:5YyZs1rmz2lSN5LEa16nkP"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/3Q6Una4GH38LwLUEiWEyxo"
+      },
+      "href" : "https://api.spotify.com/v1/albums/3Q6Una4GH38LwLUEiWEyxo",
+      "id" : "3Q6Una4GH38LwLUEiWEyxo",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/d8b5d1887b725ea7b32ace6d1eb3666ebf9e0e78",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/16afd1773ceec4d60d29340d17b9053c4d93d9d7",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/5a1582d6dd5c7a45b34c5029ad205995d8d2453f",
+        "width" : 64
+      } ],
+      "name" : "All I Ever Wanted",
+      "type" : "album",
+      "uri" : "spotify:album:3Q6Una4GH38LwLUEiWEyxo"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/29aCMpn3H7lPrcSCjaqVCM"
+      },
+      "href" : "https://api.spotify.com/v1/albums/29aCMpn3H7lPrcSCjaqVCM",
+      "id" : "29aCMpn3H7lPrcSCjaqVCM",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/b65653d34c74c3bc31473e0e782a60bd28582b88",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/38a9fefa6bb24cf0b7a874c59aed12cce8f19fb7",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/b83fcab9bdfd761205f521144ac45f3f9ab822cd",
+        "width" : 64
+      } ],
+      "name" : "Gone",
+      "type" : "album",
+      "uri" : "spotify:album:29aCMpn3H7lPrcSCjaqVCM"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/0WJfayJV9l6YcUflfQE6ol"
+      },
+      "href" : "https://api.spotify.com/v1/albums/0WJfayJV9l6YcUflfQE6ol",
+      "id" : "0WJfayJV9l6YcUflfQE6ol",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/e0428088cb1c63a8b62579c4ded0a0a63c0169fd",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/da1d5c36117b38bebbef8b74debd17ff99651f40",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/080b780d861e60adefa1dddb53827374882843c5",
+        "width" : 64
+      } ],
+      "name" : "Cookin (feat. RySoValid) - Single",
+      "type" : "album",
+      "uri" : "spotify:album:0WJfayJV9l6YcUflfQE6ol"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/4DNuCCn3e6RwTDX1hlUg4p"
+      },
+      "href" : "https://api.spotify.com/v1/albums/4DNuCCn3e6RwTDX1hlUg4p",
+      "id" : "4DNuCCn3e6RwTDX1hlUg4p",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/609e22dc05f8f511334bd967914f787defbf36ad",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/d0ce7d2eedf692d27839a3436314f7f8b7aab982",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/a2ea1dd41ffdde9d81f688fc4f0596c79aa22534",
+        "width" : 64
+      } ],
+      "name" : "Infrared",
+      "type" : "album",
+      "uri" : "spotify:album:4DNuCCn3e6RwTDX1hlUg4p"
+    }, {
+      "album_type" : "album",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/3aUH7YP03KL0Ooy3trxGAi"
+      },
+      "href" : "https://api.spotify.com/v1/albums/3aUH7YP03KL0Ooy3trxGAi",
+      "id" : "3aUH7YP03KL0Ooy3trxGAi",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/a8721592a92be3f020d90c6a3f7faff05750f0a2",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/67ee31e5a01ad9afcfbc59633eccf525387cffd0",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/27e006254b4b57d43f2a8ff3e77d05458cb86ba1",
+        "width" : 64
+      } ],
+      "name" : "Blush",
+      "type" : "album",
+      "uri" : "spotify:album:3aUH7YP03KL0Ooy3trxGAi"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "CA", "MX", "US" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/5Jv8ChoLfmpblH7LxXqeMP"
+      },
+      "href" : "https://api.spotify.com/v1/albums/5Jv8ChoLfmpblH7LxXqeMP",
+      "id" : "5Jv8ChoLfmpblH7LxXqeMP",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/745a550e709a31dd661da6e4b1194ad301bda2be",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/0a97b87f734e52f6b50d79b3ba37b47d3a89bd92",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/e45b78982471fc9f3be00065fccca9f3d2409c40",
+        "width" : 64
+      } ],
+      "name" : "Comeback Kid",
+      "type" : "album",
+      "uri" : "spotify:album:5Jv8ChoLfmpblH7LxXqeMP"
+    }, {
+      "album_type" : "album",
+      "available_markets" : [ "CA", "US", "MX" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2a8IWtMGQl8oIA3lUtLDQw"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2a8IWtMGQl8oIA3lUtLDQw",
+      "id" : "2a8IWtMGQl8oIA3lUtLDQw",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/2f15a19ad6f1627b64fd6ef906a4872484fc2526",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/707a6bba31d671aa1b9b20ba719cbb4bfb2babc2",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/1e49b564ae3b3fb65861d65276a65a1e190a4276",
+        "width" : 64
+      } ],
+      "name" : "Groovy People",
+      "type" : "album",
+      "uri" : "spotify:album:2a8IWtMGQl8oIA3lUtLDQw"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "CA", "US", "MX" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6oX08FADiVSqTSGcAOhYO5"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6oX08FADiVSqTSGcAOhYO5",
+      "id" : "6oX08FADiVSqTSGcAOhYO5",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/731f7d55452bbbe276ed269b1d775b93c90b67e2",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/af0f859486b305837f0c50d1d726bf20635774ee",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/78b86d861ea0f19b4c86671b588f9786998eed54",
+        "width" : 64
+      } ],
+      "name" : "Glory",
+      "type" : "album",
+      "uri" : "spotify:album:6oX08FADiVSqTSGcAOhYO5"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6kFSNQI5f6rHbH1tzAwLcp"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6kFSNQI5f6rHbH1tzAwLcp",
+      "id" : "6kFSNQI5f6rHbH1tzAwLcp",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/67ba804a2f79b70fc8bb1663c397394ed13f82a8",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/cdf3d28a337f70d881d12078de59e0a6cfa07fc2",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/6eb82ace9d0abe8afbea4f37baba29da34a7c3f4",
+        "width" : 64
+      } ],
+      "name" : "Just Dream (feat. Rudy)",
+      "type" : "album",
+      "uri" : "spotify:album:6kFSNQI5f6rHbH1tzAwLcp"
+    }, {
+      "album_type" : "album",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/7aObuiYxtIOdVtCyZrHkoo"
+      },
+      "href" : "https://api.spotify.com/v1/albums/7aObuiYxtIOdVtCyZrHkoo",
+      "id" : "7aObuiYxtIOdVtCyZrHkoo",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/2cb58593176a7a57862e735bd137a937da9040e5",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/152f384897f019419662f884122d2d7175384ecb",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/8180b94d14bc4e5b056751d9916c814850729d00",
+        "width" : 64
+      } ],
+      "name" : "Hogg Life, Vol. 4: American King",
+      "type" : "album",
+      "uri" : "spotify:album:7aObuiYxtIOdVtCyZrHkoo"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/4cWYIO56J30YRS6CbC6dAz"
+      },
+      "href" : "https://api.spotify.com/v1/albums/4cWYIO56J30YRS6CbC6dAz",
+      "id" : "4cWYIO56J30YRS6CbC6dAz",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/0d7d3ffe4d410fbe55e5a8a01a1658a6d756c7ec",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/dcf9de29718e294ebf23b5a797a143fd664fda99",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/2ddd88ddd178323919bcd7ffa6b8f11a7199ff77",
+        "width" : 64
+      } ],
+      "name" : "Make Me Feel from XOXO the Netflix Original Film",
+      "type" : "album",
+      "uri" : "spotify:album:4cWYIO56J30YRS6CbC6dAz"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "US" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/6lTaCdXNUkPk228C199s78"
+      },
+      "href" : "https://api.spotify.com/v1/albums/6lTaCdXNUkPk228C199s78",
+      "id" : "6lTaCdXNUkPk228C199s78",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/d127d17abd429606b71b5ac9caa8f8fb06ce2571",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/f5c1b5a22ecb089b98244ad5478088b3a8048f4b",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/890284216762e93e2ebeb2fbad8f43f2742f42f4",
+        "width" : 64
+      } ],
+      "name" : "SOS (Overboard)",
+      "type" : "album",
+      "uri" : "spotify:album:6lTaCdXNUkPk228C199s78"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "CA", "MX", "US" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/5tJG36LyAxeFMOkPSqlAIU"
+      },
+      "href" : "https://api.spotify.com/v1/albums/5tJG36LyAxeFMOkPSqlAIU",
+      "id" : "5tJG36LyAxeFMOkPSqlAIU",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/5bb692be8d0c072d126790e6c5cac2a7bb3e8a5e",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/da1c8e48cc937f28e1f337921f8c83d77f193319",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/732c981a0ab99d776873f20024a772d301b155c3",
+        "width" : 64
+      } ],
+      "name" : "Who Do You Think Of?",
+      "type" : "album",
+      "uri" : "spotify:album:5tJG36LyAxeFMOkPSqlAIU"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "AD", "AT", "AU", "BE", "BG", "CH", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GB", "GR", "HK", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NL", "NO", "NZ", "PH", "PL", "PT", "SE", "SG", "SK", "TR", "TW", "AR", "BR", "UY", "BO", "CA", "CL", "DO", "PY", "US", "CO", "EC", "MX", "PA", "PE", "CR", "GT", "HN", "NI", "SV" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/2s8tAhHSa7NEmOs6zygP12"
+      },
+      "href" : "https://api.spotify.com/v1/albums/2s8tAhHSa7NEmOs6zygP12",
+      "id" : "2s8tAhHSa7NEmOs6zygP12",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/d981062bbed98c79c7f2be57bdd155cc312856cb",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/4da1d725c99a1d54ff2ff4b78726d77ca2a2fbfd",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/1d0d4fddf7119532c7f97f774391bb7b8496c48c",
+        "width" : 64
+      } ],
+      "name" : "Something About You",
+      "type" : "album",
+      "uri" : "spotify:album:2s8tAhHSa7NEmOs6zygP12"
+    }, {
+      "album_type" : "single",
+      "available_markets" : [ "CA", "MX", "US" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/08TBfp6GDtlh8W8m82yi6l"
+      },
+      "href" : "https://api.spotify.com/v1/albums/08TBfp6GDtlh8W8m82yi6l",
+      "id" : "08TBfp6GDtlh8W8m82yi6l",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/291cdf9c2be7bea79c54103c03946238fc4a3cf3",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/bcdb86e3db8a69e4eab4eeee8787475b24a9abfa",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/e4e6c7c77d21fe5f78d966103bd08de02070480c",
+        "width" : 64
+      } ],
+      "name" : "Gemini Feed",
+      "type" : "album",
+      "uri" : "spotify:album:08TBfp6GDtlh8W8m82yi6l"
+    } ],
+    "limit" : 20,
+    "next" : "https://api.spotify.com/v1/browse/new-releases?offset=20&limit=20",
+    "offset" : 0,
+    "previous" : null,
+    "total" : 500
+  }
+}
