@@ -125,23 +125,32 @@ for item in tuple_album_id_artist_id_list:
         final_album_list.append(item)
 
 
-
-
-loop_thru = int(ceil(float(len(final_album_list)) / 20.0))  #spotify api only lets you pull 20 albums at a time
-
-
+# Takes the final_album_list produced from the above step and loops through the list
+# 20 at a time to retrieve the album info for each item, then prints album name
+# and artist name
 
 if token:
-print "The token exists!"
-sp = spotipy.Spotify(auth=token)
-album_results = sp.albums(fixed_20_new_release_album_ids)
-for i in range(len(album_results['albums'])):
-    new_release_artist_ids.append(str(album_results['albums'][i]['artists'][0]['id']))
+    print "The token exists!"
+    unzipped = zip(*final_album_list)
+    album_ids = list(unzipped[0])
+    artist_ids = list(unzipped[1])
+    loop_thru = int(ceil(float(len(album_ids)) / 20.0))  #calculates the number of times to loop through the list
+    album_names = []
+    album_art_300 = []
+    album_links = []
+    artist_names = []
+    artist_links = []
+    for i in range(loop_thru):
+        sp = spotipy.Spotify(auth=token)
+        album_info_results = sp.albums(album_ids[0:20])
+        del album_ids[:20]
+        for x in range(len(album_info_results['albums'])):
+            album_names.append(str(album_info_results['albums'][x]['name']))
+            album_links.append(str(album_info_results['albums'][x]['external_urls']['spotify']))
+            album_art_300.append(str(album_info_results['albums'][x]['images'][1]['url']))
+            artist_names.append(str(album_info_results['albums'][x]['tracks']['items'][0]['artists'][0]['name']))
+            artist_links.append(str(album_info_results['albums'][x]['artists'][0]['external_urls']['spotify']))
 
-
-
-
-#
 
 
 
