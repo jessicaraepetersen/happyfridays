@@ -1,17 +1,21 @@
+import os
 import sys
 import spotipy
 import spotipy.util as util
 from math import ceil
+import unidecode
 
 scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
 
-if len(sys.argv) > 1:
-    username = sys.argv[1]
-else:
-    print "Usage: %s username" % (sys.argv[0],)
-    sys.exit()
+# if len(sys.argv) > 1:
+#     username = sys.argv[1]
+# else:
+#     print "Usage: %s username" % (sys.argv[0],)
+#     sys.exit()
 
-token = util.prompt_for_user_token(username, scope)
+# token = util.prompt_for_user_token(username, scope)
+
+token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
 
 
 ################################################################################
@@ -30,7 +34,6 @@ if token:
     for i in range(num_results):
         complete_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
         fixed_20_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
-        # album_ids_joined = ','.join(complete_new_release_album_ids)
 else:
     print "Can't get token for", username
 
@@ -56,25 +59,25 @@ else:
 #and takes the album ids from above and gets the rest of the corresponding artist ids
 #assumes the Spotify New Release list is larger than 20
 
-    if token:
-        print "The token exists!"
-        offset = (times_to_offset*2+2)
-        for i in range(2, offset, 2):
-            fixed_20_new_release_album_ids = []
+if token:
+    print "The token exists!"
+    offset = (times_to_offset*2+2)
+    for i in range(2, offset, 2):
+        fixed_20_new_release_album_ids = []
+        sp = spotipy.Spotify(auth=token)
+        new_release_results2 = sp.new_releases(limit=20, offset=(i*10))
+        for i in range(num_results):
+            complete_new_release_album_ids.append(str(new_release_results2['albums']['items'][i]['id']))
+            fixed_20_new_release_album_ids.append(str(new_release_results2['albums']['items'][i]['id']))
+        if token:
+            print "The token exists!"
             sp = spotipy.Spotify(auth=token)
-            new_release_results = sp.new_releases(limit=20, offset=(i*10))
-            for i in range(num_results):
-                complete_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
-                fixed_20_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
-            if token:
-                print "The token exists!"
-                sp = spotipy.Spotify(auth=token)
-                album_results = sp.albums(fixed_20_new_release_album_ids)
-                for i in range(len(album_results['albums'])):
-                    new_release_artist_ids.append(str(album_results['albums'][i]['artists'][0]['id']))
-                
-    else:
-        print "Can't get token for", username
+            album_results = sp.albums(fixed_20_new_release_album_ids)
+            for i in range(len(album_results['albums'])):
+                new_release_artist_ids.append(str(album_results['albums'][i]['artists'][0]['id']))
+            
+else:
+    print "Can't get token for", username
 
 
 ################################################################################
@@ -100,19 +103,18 @@ else:
 ################################################################################
 #Gets the rest of the artist ids that the user follows
 
-def fill_user_follows():
-    for i in range(num_to_loop):
-        if token:
-            print "The token exists!"
-            sp = spotipy.Spotify(auth=token)
-            artists_user_follows_results = sp.current_user_followed_artists(limit=50, 
-                                                    after=user_followed_artists_ids[-1])
 
-            for i in range(len(artists_user_follows_results['artists']['items'])):
-                user_followed_artists_ids.append(str(artists_user_follows_results['artists']['items'][i]['id']))
+for i in range(num_to_loop):
+    if token:
+        print "The token exists!"
+        sp = spotipy.Spotify(auth=token)
+        artists_user_follows_results = sp.current_user_followed_artists(limit=50, 
+                                                after=user_followed_artists_ids[-1])
+
+        for i in range(len(artists_user_follows_results['artists']['items'])):
+            user_followed_artists_ids.append(str(artists_user_follows_results['artists']['items'][i]['id']))
 
 
-fill_user_follows()
 
 ################################################################################
 #compares New Release artist id to User follows artists ids and deletes the
@@ -125,6 +127,26 @@ set_of_user_followed_artists_ids = set(user_followed_artists_ids)
 for item in tuple_album_id_artist_id_list:
     if item[1] in set_of_user_followed_artists_ids:
         final_album_list.append(item)
+
+
+################################################################################
+# Helper Function
+
+def special_char(results):
+    '''Turns special characters in unicode into normal character string.'''
+
+    '''This function checks to see if the unicode from the Spotify API can be
+    turned into a string. If the error UnicodeEncodeError occurs, the function
+    turns the special characters in the unicode into a string of normal 
+    characters. This function is used in the code block below when querying the 
+    Spotify API for the album names and the artist names, which will be displayed 
+    to the user.'''
+    try:
+        str(results)
+    except UnicodeEncodeError:
+        results = unidecode.unidecode(results)
+    return results
+
 
 ################################################################################
 # Takes the final_album_list produced from the above step and loops through the list
@@ -147,13 +169,12 @@ if token:
         sp = spotipy.Spotify(auth=token)
         album_info_results = sp.albums(album_ids[0:20])
         del album_ids[:20]
-        for x in range(len(album_info_results['albums'])):
-            album_names.append(str(album_info_results['albums'][x]['name']))
-            album_links.append(str(album_info_results['albums'][x]['external_urls']['spotify']))
-            album_art_300.append(str(album_info_results['albums'][x]['images'][1]['url']))
-            artist_names.append(str(album_info_results['albums'][x]['artists'][0]['name']))
-            artist_links.append(str(album_info_results['albums'][x]['artists'][0]['external_urls']['spotify']))
-        #########
+        for i in range(len(album_info_results['albums'])):
+            album_names.append(special_char(album_info_results['albums'][i]['name']))
+            album_links.append(str(album_info_results['albums'][i]['external_urls']['spotify']))
+            album_art_300.append(str(album_info_results['albums'][i]['images'][1]['url']))
+            artist_names.append(special_char(album_info_results['albums'][i]['artists'][0]['name']))
+            artist_links.append(str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify']))
         #gets a list of album track URIs
         num_of_tracks = len(album_info_results['albums'][1]['tracks']['items'])
         album_track_uris = []
@@ -179,7 +200,7 @@ if token:
     print "The token exists!"
     sp = spotipy.Spotify(auth=token)
     #Spotify's max limit of playlist returns is 50
-    user_playlists_results = sp.user_playlists(int(user_id), limit=50)  
+    user_playlists_results = sp.user_playlists(user_id, limit=50)  
 
     total_available = user_playlists_results['total']
     num_results = len(user_playlists_results['items'])
@@ -195,7 +216,7 @@ if token:
     if times_to_offset > 0:
         for i in [50, 100]:
             sp = spotipy.Spotify(auth=token)
-            user_playlists_results = sp.user_playlists(int(user_id), limit=50, offset=i)
+            user_playlists_results = sp.user_playlists(user_id, limit=50, offset=i)
             user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
             user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
 
@@ -206,6 +227,12 @@ if token:
 #     print "The token exists!"
 #     sp = spotipy.Spotify(auth=token)
 #     user_playlist_add_tracks(user_id, playlist_id, track_ids)
+
+################################################################################
+#   Helper Functions
+
+
+
 
 
 
