@@ -22,6 +22,7 @@ def index():
 @app.route('/callback')
 def callback(results):
     """Homepage."""
+
     print "redirected\n\n\n"
     print results
     return redirect('/')
@@ -40,4 +41,4 @@ if __name__ == "__main__":
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
 
-    app.run()
+    app.run(host='127.0.0.1', port=5000)
