@@ -205,7 +205,7 @@ if token:
     total_available = user_playlists_results['total']
     num_results = len(user_playlists_results['items'])
     #Maxiumum offset in Spotify for this endpoint is 100
-    times_to_offset = int(ceil(total_available/float(num_results)) - 1)  
+    times_to_offset = int(ceil(float(total_available)/float(num_results)) - 1)  
 
     user_playlist_ids = [] 
     user_playlist_names = []
@@ -213,12 +213,19 @@ if token:
         user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
         user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
     #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
+    if times_to_offset > 2:
+            times_to_offset = 2
     if times_to_offset > 0:
-        for i in [50, 100]:
+        #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times       
+        offset = len(range(times_to_offset)) * 50
+        for i in range(times_to_offset):
             sp = spotipy.Spotify(auth=token)
-            user_playlists_results = sp.user_playlists(user_id, limit=50, offset=i)
-            user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
-            user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
+            #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
+            user_playlists_results = sp.user_playlists(user_id, limit=50, offset=offset)
+            num_results = len(user_playlists_results['items'])
+            for i in range(num_results):
+                user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
+                user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
 
 
 ################################################################################
