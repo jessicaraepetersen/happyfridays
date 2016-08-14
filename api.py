@@ -165,6 +165,7 @@ if token:
     album_links = []
     artist_names = []
     artist_links = []
+    album_track_uris = []
     for i in range(loop_thru):
         sp = spotipy.Spotify(auth=token)
         album_info_results = sp.albums(album_ids[0:20])
@@ -175,11 +176,12 @@ if token:
             album_art_300.append(str(album_info_results['albums'][i]['images'][1]['url']))
             artist_names.append(special_char(album_info_results['albums'][i]['artists'][0]['name']))
             artist_links.append(str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify']))
-        #gets a list of album track URIs
-        num_of_tracks = len(album_info_results['albums'][1]['tracks']['items'])
-        album_track_uris = []
-        for i in range(num_of_tracks):
-            album_track_uris.append(str(album_info_results['albums'][1]['tracks']['items'][i]['uri']))
+            #gets a list of album track URIs
+            num_of_tracks = len(album_info_results['albums'][i]['tracks']['items'])
+            list_of_current_album_track_uris = []
+            for x in range(num_of_tracks):
+                list_of_current_album_track_uris.append(str(album_info_results['albums'][i]['tracks']['items'][x]['uri']))
+            album_track_uris.append(list_of_current_album_track_uris)
 
 else:
     print "Can't get token for", username
@@ -227,6 +229,16 @@ if token:
                 user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
                 user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
 
+################################################################################
+# Creates a dictionary of all the API data needed to seed the database
+album_names
+album_art_300
+album_links
+artist_names
+artist_links
+album_track_uris
+user_playlist_ids
+user_playlist_names
 
 ################################################################################
 
