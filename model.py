@@ -1,8 +1,6 @@
-"""Models and database functions for New For You project."""
+"""Models and database functions for HappyFriday project."""
 
 from flask_sqlalchemy import SQLAlchemy
-
-import correlation
 
 # This is the connection to the PostgreSQL database; we're getting this through
 # the Flask-SQLAlchemy helper library. On this, we can find the `session`
@@ -15,7 +13,7 @@ db = SQLAlchemy()
 # Model definitions
 
 class Album(db.Model):
-    """Album of New For You website."""
+    """Album of HappyFriday website."""
 
     __tablename__ = "albums"
 
@@ -23,9 +21,10 @@ class Album(db.Model):
     album_name = db.Column(db.String(100), nullable=False)
     link_to_album = db.Column(db.String(60), nullable=False)
     album_art = db.Column(db.String(70), nullable=False)
-    artist_id = db.Column(db.String(50), nullable=False, db.ForeignKey('artists.artist_id'))
-    album_track_uri = db.Column(db.String(), nullable=False) #HELP QUEUE: How do I make an arry as the item in the list?
-    #Each Spotify album track URI is 36 characters in length, including the quotes
+    artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
+    # album_track_uri = db.Column(db.String(), nullable=False) 
+    # #HELP QUEUE: How do I make an array as the item in the list?
+    # #Each Spotify album track URI is 36 characters in length, including the quotes
 
     # # Define relationship to Artist
     artist = db.relationship( 'Artist', backref='albums')
@@ -37,7 +36,7 @@ class Album(db.Model):
 
 
 class Artist(db.Model):
-    """Artist of New For You website."""
+    """Artist of HappyFriday website."""
 
     __tablename__ = "artists"
 

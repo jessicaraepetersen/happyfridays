@@ -231,14 +231,22 @@ if token:
 
 ################################################################################
 # Creates a dictionary of all the API data needed to seed the database
-album_names
-album_art_300
-album_links
-artist_names
-artist_links
-album_track_uris
-user_playlist_ids
-user_playlist_names
+
+unzipped = zip(*final_album_list)
+album_ids = list(unzipped[0])
+
+album_info_dict = {
+    'album_ids': album_ids,
+    'album_names': album_names,
+    'album_links': album_links,
+    'album_art': album_art_300,
+    'album_track_uris': album_track_uris,
+    'artist_ids': artist_ids,
+    'artist_names': artist_names,
+    'artist_links': artist_links,
+    'user_playlist_ids': user_playlist_ids,
+    'user_playlist_names': user_playlist_names
+}
 
 ################################################################################
 
