@@ -229,6 +229,8 @@ if token:
                 user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
                 user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
 
+
+
 ################################################################################
 # Creates a dictionary of all the API data needed to seed the database
 
@@ -242,14 +244,42 @@ album_info_dict = {
     'album_art': album_art_300,
     'album_track_uris': album_track_uris,
     'artist_ids': artist_ids,
-    'artist_names': artist_names,
-    'artist_links': artist_links,
     'user_playlist_ids': user_playlist_ids,
     'user_playlist_names': user_playlist_names
 }
 
 ################################################################################
+# Helper Function
 
+def remove_duplicates(values):
+    """This function removes duplicates from a list, using set, without changing
+    the order of the items in the original list."""
+    output = []
+    seen = set()
+    for value in values:
+        # If value has not been encountered yet,
+        # add it to both list and set.
+        if value not in seen:
+            output.append(value)
+            seen.add(value)
+    return output
+
+
+artist_ids_no_duplicates = remove_duplicates(artist_ids)
+artist_names = remove_duplicates(artist_names)
+artist_links = remove_duplicates(artist_links)
+
+
+################################################################################
+# Creates a dictionary of all the API data needed to seed the database
+
+artist_info_dict = {
+    'artist_ids': artist_ids_no_duplicates,
+    'artist_names': artist_names,
+    'artist_links': artist_links
+}
+
+################################################################################
 # if token:
 #     print "The token exists!"
 #     sp = spotipy.Spotify(auth=token)

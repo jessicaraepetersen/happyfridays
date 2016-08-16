@@ -12,35 +12,13 @@ db = SQLAlchemy()
 ##############################################################################
 # Model definitions
 
-class Album(db.Model):
-    """Album of HappyFriday website."""
-
-    __tablename__ = "albums"
-
-    album_id = db.Column(db.String(50), primary_key=True)
-    album_name = db.Column(db.String(100), nullable=False)
-    link_to_album = db.Column(db.String(60), nullable=False)
-    album_art = db.Column(db.String(70), nullable=False)
-    artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
-    # album_track_uri = db.Column(db.String(), nullable=False) 
-    # #HELP QUEUE: How do I make an array as the item in the list?
-    # #Each Spotify album track URI is 36 characters in length, including the quotes
-
-    # # Define relationship to Artist
-    artist = db.relationship( 'Artist', backref='albums')
-
-    def __repr__(self):
-        """Provide helpful representation when printed."""
-
-        return "<Album album_id=%s album_name=%s>" % (self.album_id, self.album_name)
-
 
 class Artist(db.Model):
     """Artist of HappyFriday website."""
 
     __tablename__ = "artists"
 
-    artist_id = db.Column(db.String(50), primary_key=True)
+    artist_id = db.Column(db.String(50), primary_key=True, unique=False)
     artist_name = db.Column(db.String(100), nullable=False)
     link_to_artist = db.Column(db.String(60), nullable=False)
 
@@ -51,13 +29,35 @@ class Artist(db.Model):
         return "<Artist artist_id=%s artist_name=%s>" % (self.artist_id, self.artist_name)
 
 
+
+class Album(db.Model):
+    """Album of HappyFriday website."""
+
+    __tablename__ = "albums"
+
+    album_id = db.Column(db.String(50), primary_key=True)
+    album_name = db.Column(db.String(100), nullable=False)
+    link_to_album = db.Column(db.String(60), nullable=False)
+    album_art = db.Column(db.String(70), nullable=False)
+    artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
+
+    # # Define relationship to Artist
+    artist = db.relationship( 'Artist', backref='albums')
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Album album_id=%s album_name=%s>" % (self.album_id, self.album_name)
+
+
+
 class Playlist(db.Model):
     """Playlist of Spotify user."""
 
     __tablename__ = "playlists"
 
     playlist_id = db.Column(db.String(50), primary_key=True)
-    playlist_name = db.Column(db.String(140))
+    playlist_name = db.Column(db.String(140), nullable=False)
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -66,6 +66,25 @@ class Playlist(db.Model):
             self.playlist_id, self.playlist_name)
 
 
+
+class Track(db.Model):
+    """Album track uris of HappyFriday website."""
+
+    __tablename__ = "tracks"
+
+    #Each Spotify album track URI is 36 characters in length, including the quotes
+    album_track_uri = db.Column(db.String(40), primary_key=True)
+    album_id = db.Column(db.String(50), db.ForeignKey('albums.album_id'))
+
+
+    # # Define relationship to Album
+    album = db.relationship( 'Album', backref='tracks')
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<Track album_track_uri=%s album_id=%s>" % (self.album_track_uri, 
+                                                                self.album_id)
 ##############################################################################
 # Helper functions
 
