@@ -25,7 +25,6 @@ def load_artists():
     db.session.commit()
 
 
-
 def load_albums():
     """Load albums from album_info_dict into database."""
 
@@ -48,7 +47,6 @@ def load_albums():
 
     # Once we're done, we should commit our work
     db.session.commit()
-
 
 
 

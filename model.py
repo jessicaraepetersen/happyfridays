@@ -22,6 +22,8 @@ class Artist(db.Model):
     artist_name = db.Column(db.String(100), nullable=False)
     link_to_artist = db.Column(db.String(60), nullable=False)
 
+    albums = db.relationship('Album')
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -42,7 +44,7 @@ class Album(db.Model):
     artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
 
     # # Define relationship to Artist
-    artist = db.relationship( 'Artist', backref='albums')
+    artists = db.relationship('Artist')
 
     def __repr__(self):
         """Provide helpful representation when printed."""
