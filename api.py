@@ -4,16 +4,17 @@ import spotipy
 import spotipy.util as util
 from math import ceil
 import unidecode
+# from server import token
 
 scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
 
-# if len(sys.argv) > 1:
-#     username = sys.argv[1]
-# else:
-#     print "Usage: %s username" % (sys.argv[0],)
-#     sys.exit()
+# # if len(sys.argv) > 1:
+# #     username = sys.argv[1]
+# # else:
+# #     print "Usage: %s username" % (sys.argv[0],)
+# #     sys.exit()
 
-# token = util.prompt_for_user_token(username, scope)
+# # token = util.prompt_for_user_token(username, scope)
 
 token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
 
@@ -147,6 +148,20 @@ def special_char(results):
         results = unidecode.unidecode(results)
     return results
 
+def move_the(results):
+    '''Removes "The " from beginning of string and appends to the end with comma.'''
+
+    '''This function checks the Spotify API album names for a "The " (including 
+    a space at the end of "The ") and removes "The " from the beginning of the
+    string and appends ", The" to the end of the string (along with a comma).'''
+
+    if results[:4] == "The ":
+        new_results = results[4:]
+        new_results += ", The"
+        return new_results
+    else:
+        return results
+
 
 ################################################################################
 # Takes the final_album_list produced from the above step and loops through the list
@@ -164,6 +179,7 @@ if token:
     album_art_300 = []
     album_links = []
     artist_names = []
+    artist_sorted_names = []
     artist_links = []
     album_track_uris = []
     for i in range(loop_thru):
@@ -175,6 +191,7 @@ if token:
             album_links.append(str(album_info_results['albums'][i]['external_urls']['spotify']))
             album_art_300.append(str(album_info_results['albums'][i]['images'][1]['url']))
             artist_names.append(special_char(album_info_results['albums'][i]['artists'][0]['name']))
+            artist_sorted_names.append(move_the(special_char(album_info_results['albums'][i]['artists'][0]['name'])))
             artist_links.append(str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify']))
             #gets a list of album track URIs
             num_of_tracks = len(album_info_results['albums'][i]['tracks']['items'])
@@ -245,7 +262,8 @@ album_info_dict = {
     'album_track_uris': album_track_uris,
     'artist_ids': artist_ids,
     'user_playlist_ids': user_playlist_ids,
-    'user_playlist_names': user_playlist_names
+    'user_playlist_names': user_playlist_names,
+    'user_id': user_id
 }
 
 ################################################################################
@@ -267,6 +285,7 @@ def remove_duplicates(values):
 
 artist_ids_no_duplicates = remove_duplicates(artist_ids)
 artist_names = remove_duplicates(artist_names)
+artist_sorted_names = remove_duplicates(artist_sorted_names)
 artist_links = remove_duplicates(artist_links)
 
 
@@ -276,6 +295,7 @@ artist_links = remove_duplicates(artist_links)
 artist_info_dict = {
     'artist_ids': artist_ids_no_duplicates,
     'artist_names': artist_names,
+    'artist_sorted_names': artist_sorted_names,
     'artist_links': artist_links
 }
 

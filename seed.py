@@ -12,10 +12,12 @@ def load_artists():
     for i in range(len(artist_info_dict['artist_ids'])):
         artist_id = artist_info_dict['artist_ids'][i]
         artist_name = artist_info_dict['artist_names'][i]
+        artist_sorted_name = artist_info_dict['artist_sorted_names'][i]
         link_to_artist = artist_info_dict['artist_links'][i]
 
         artist = Artist(artist_id=artist_id,
                       artist_name=artist_name,
+                      artist_sorted_name=artist_sorted_name,
                       link_to_artist=link_to_artist)
 
         # We need to add to the session or it won't ever be stored
@@ -89,6 +91,20 @@ def load_tracks():
 
     # Once we're done, we should commit our work
     db.session.commit()
+
+
+
+def load_users():
+    """Load Spotify Users from album_info_dict into database."""
+
+    user_id = album_info_dict['user_id']
+    user = User(user_id=user_id)
+    # We need to add to the session or it won't ever be stored
+    db.session.add(user)
+
+    # Once we're done, commit the work
+    db.session.commit()
+
 
 if __name__ == "__main__":
     connect_to_db(app)
