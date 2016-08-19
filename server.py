@@ -1,10 +1,12 @@
 # from jinja2 import StrictUndefined
 import os # To access my OS environment variables, specifically spotify client id
 import requests
+import fill_db
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Artist, Album, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+from api_data import get_api_data
 
 
 
@@ -42,17 +44,21 @@ def index():
 @app.route('/callback')
 def callback():
     """Homepage."""
-    # print "--CALLBACK--"
-    # code = request.args.get('code')
-    # print code
-    token_info = client_credentials_manager._request_access_token()
-    token = str(token_info['access_token'])
 
-    # the_dict = the_one_big_one(token)
-    # fill_the_db(the_dict)
+    code = request.args.get('code')
+    token_info = api.get_access_token(code)
+    token = str(token_info['access_token'])
+    album_info_dict = get_api_data(token)
+    fill_db.fill_db(album_info_dict)
+
+    # token_info = client_credentials_manager._request_access_token()
+    # token_info = client_credentials_manager._add_custom_values_to_token_info(token_info)
+    # is_token_expired = client_credentials_manager._is_token_expired(token_info)
+    # if is_token_expired == True
 
     albums = db.session.query(Album).join(Album.artists).order_by(Artist.artist_sorted_name).all()
 
+    # return render_template("connecting.html")
     return render_template("list.html", albums=albums)
 
 # @app.route('/list')

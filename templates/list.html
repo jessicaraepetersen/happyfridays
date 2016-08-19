@@ -32,11 +32,16 @@
         {% for album in albums %}
             <div class='album-card'>
                 <img class='album-art' src={{ album.album_art }} alt="Image of "{{ album.album_name }} " Art">
-                <a class='artist-name' href={{ album.artists.link_to_artist }}>{{ album.artists.artist_name }}</a>
-                <a class='album-name' href={{ album.link_to_album }}>{{ album.album_name }}</a>
+                <a class='artist-name' href={{ album.artists.link_to_artist }}><h2>{{ album.artists.artist_name }}</h2></a>
+                <a class='album-name' href={{ album.link_to_album }}><h3>{{ album.album_name }}</h3></a>
                 <img class='play-btn' src="/static/img/icons/play.svg" alt='Play Album Icon'>
                 <img class='plus-btn' src="/static/img/icons/plus.svg" alt='Add Album to Playlist Icon'>
                 <img class='x-btn' src="/static/img/icons/x.svg" alt='Remove Album Icon'>
+
+<!--                 set (play, add, x) buttons as background images to divs
+                because it will be easier on hover to swap out background image -->
+
+
             </div>
         {% endfor %}
         </div>

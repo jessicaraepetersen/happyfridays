@@ -1,19 +1,19 @@
 """Utility file to seed albums database from Spotify API data in api"""
 
 from sqlalchemy import func
-from api import album_info_dict, artist_info_dict
 from model import Album, Artist, Playlist, Track, connect_to_db, db
-from server import app
+# from server import app
 
 
-def load_artists():
+
+def load_artists(album_info_dict):
     """Load artists from album_info_dict into database."""
 
-    for i in range(len(artist_info_dict['artist_ids'])):
-        artist_id = artist_info_dict['artist_ids'][i]
-        artist_name = artist_info_dict['artist_names'][i]
-        artist_sorted_name = artist_info_dict['artist_sorted_names'][i]
-        link_to_artist = artist_info_dict['artist_links'][i]
+    for i in range(len(album_info_dict['artist_ids_no_duplicates'])):
+        artist_id = album_info_dict['artist_ids_no_duplicates'][i]
+        artist_name = album_info_dict['artist_names'][i]
+        artist_sorted_name = album_info_dict['artist_sorted_names'][i]
+        link_to_artist = album_info_dict['artist_links'][i]
 
         artist = Artist(artist_id=artist_id,
                       artist_name=artist_name,
@@ -27,7 +27,7 @@ def load_artists():
     db.session.commit()
 
 
-def load_albums():
+def load_albums(album_info_dict):
     """Load albums from album_info_dict into database."""
 
     for i in range(len(album_info_dict['album_ids'])):
@@ -52,7 +52,7 @@ def load_albums():
 
 
 
-def load_playlists():
+def load_playlists(album_info_dict):
     """Load playlists from u.data into database."""
 
     for i in range(len(album_info_dict['user_playlist_ids'])):
@@ -75,7 +75,7 @@ def load_playlists():
     db.session.commit()
 
 
-def load_tracks():
+def load_tracks(album_info_dict):
     """Load album track uris from album_info_dict into database."""
 
     tuples_of_ids_uris = zip(album_info_dict['album_ids'], album_info_dict['album_track_uris'])
@@ -94,7 +94,7 @@ def load_tracks():
 
 
 
-def load_users():
+def load_users(album_info_dict):
     """Load Spotify Users from album_info_dict into database."""
 
     user_id = album_info_dict['user_id']
@@ -106,12 +106,17 @@ def load_users():
     db.session.commit()
 
 
+def fill_db(album_info_dict):
+    load_artists(album_info_dict)
+    load_albums(album_info_dict)
+    load_playlists(album_info_dict)
+    load_tracks(album_info_dict)
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     db.create_all()
 
-    load_artists()
-    load_albums()
-    load_playlists()
-    load_tracks()
+
+
 
