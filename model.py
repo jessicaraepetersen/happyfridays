@@ -34,7 +34,8 @@ class Artist(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Artist artist_id=%s artist_name=%s>" % (self.artist_id, self.artist_name)
+        return "<Artist artist_id=%s artist_name=%s>" % (self.artist_id, 
+                                                        self.artist_name)
 
 
 
@@ -60,7 +61,8 @@ class Album(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
 
-        return "<Album album_id=%s album_name=%s>" % (self.album_id, self.album_name)
+        return "<Album album_id=%s album_name=%s>" % (self.album_id, 
+                                                      self.album_name)
 
 
 
@@ -139,6 +141,7 @@ def connect_to_db(app):
 
     # Configure to use our PostgreSQL database
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
 

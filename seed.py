@@ -115,4 +115,3 @@ if __name__ == "__main__":
     load_playlists()
     load_tracks()
 
-    db.session.commit()

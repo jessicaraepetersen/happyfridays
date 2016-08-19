@@ -4,17 +4,17 @@ import spotipy
 import spotipy.util as util
 from math import ceil
 import unidecode
-# from server import token
+
 
 scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
 
-# # if len(sys.argv) > 1:
-# #     username = sys.argv[1]
-# # else:
-# #     print "Usage: %s username" % (sys.argv[0],)
-# #     sys.exit()
+# # # if len(sys.argv) > 1:
+# # #     username = sys.argv[1]
+# # # else:
+# # #     print "Usage: %s username" % (sys.argv[0],)
+# # #     sys.exit()
 
-# # token = util.prompt_for_user_token(username, scope)
+# # # token = util.prompt_for_user_token(username, scope)
 
 token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
 
