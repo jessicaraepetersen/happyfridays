@@ -12,6 +12,19 @@ db = SQLAlchemy()
 ##############################################################################
 # Model definitions
 
+class User(db.Model):
+    """Info of User of HappyFridays website."""
+
+    __tablename__ = "users"
+
+    user_id = db.Column(db.String(50), primary_key=True)
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<User user_id=%s>" % (self.user_id)
+
+
 
 class Artist(db.Model):
     """Artist of HappyFridays website."""
@@ -108,19 +121,6 @@ class Track(db.Model):
         return "<Track album_track_uri=%s album_id=%s>" % (self.album_track_uri, 
                                                                 self.album_id)
 
-
-class User(db.Model):
-    """Info of User of HappyFridays website."""
-
-    __tablename__ = "users"
-
-    user_id = db.Column(db.String(40), primary_key=True)
-
-
-    def __repr__(self):
-        """Provide helpful representation when printed."""
-
-        return "<User user_id=%s" % (self.user_id)
 
 ##############################################################################
 # Helper functions

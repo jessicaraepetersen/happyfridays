@@ -1,4 +1,4 @@
-/*-------------------------HappyFridays List Page----------------------------*/
+
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -15,7 +15,77 @@ a {
    text-decoration: none; 
 }
 
+/*-------------------------HappyFridays Home Page----------------------------*/
 
+#home-body {
+    background-image: url('../img/img/drake-bg@2x.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #C0E8F7;
+}
+
+
+.home-logo {
+    display: block;
+    margin: ;
+    height: 40px;
+    width: 216px;
+    margin-top: 55px;
+    margin-left: 80px;
+}
+
+.content-div {
+    margin-top: 126px;
+    margin-left: 80px;
+    width: 650px;
+}
+
+.home-h1 {
+    font-size: 2.25rem; /* I want 36px / default browser: 16px = gives me 2.25rem */
+    font-weight: normal;
+    color: #FFFFFF;
+    letter-spacing: 0.00em; 
+    height: 86px;
+    margin: 0;
+}
+
+.home-p {
+    opacity: 0.85;
+    font-size: 1.06rem; /* I want 17px / default browser: 16px = gives me 1.06rem */
+    color: #FFFFFF;
+    letter-spacing: 0px;
+    line-height: 28px;
+    margin-top: 27px;
+    margin-bottom: 0;
+    width: 529px;
+}
+
+
+.spotify-btn a {
+    background: #2EBD59;
+    border-radius: 24px;
+    margin-top: 48px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: .87rem; /* I want 16px / default browser: 16px = gives me 1rem */
+    display: block;
+    width: 240px;
+    height: 32px;
+    text-align: center;
+    padding-top: 0;
+}
+
+.spotify-btn a::before {
+    content: url(../img/icons/spotify.svg);
+    margin-right: 10px;
+    position: relative;
+    top: 5px;
+}
+
+
+/*-------------------------HappyFridays List Page----------------------------*/
 #list-body {
     background-image: url('../img/img/beyonce-bg@2x.jpg');
     background-size: cover;
@@ -24,14 +94,14 @@ a {
     background-attachment: fixed;
 }
 
-.happy-friday-icon {
+.happy-fridays-icon {
     display: block;
     margin: 33px auto 0;
     height: 40px;
     width: 40px;
 }
 
-.new-for-you-header {
+.new-for-you-h1 {
     color: #282E36;
     text-decoration: none;
     font-size: 2.25rem; /* I want 36px / default browser: 16px = gives me 2.25rem */
@@ -41,7 +111,7 @@ a {
     letter-spacing: -0.03em;
 }
 
-.new-releases-header2 {
+.new-releases-h2 {
     color: #636E7C;
     text-decoration: none;
     font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
@@ -69,7 +139,7 @@ a {
 
 .album-card:hover {
     box-shadow: 0px 4px 14px 3px rgba(40,46,54,0.20);
-    transition: all 250ms ease-in;
+    transition: all 200ms ease-in;
 }
 
 
