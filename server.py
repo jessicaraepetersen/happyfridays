@@ -46,10 +46,10 @@ def callback():
     """Homepage."""
 
     code = request.args.get('code')
-    token_info = api.get_access_token(code)
-    token = str(token_info['access_token'])
-    album_info_dict = get_api_data(token)
-    fill_db.fill_db(album_info_dict)
+    # token_info = api.get_access_token(code)
+    # token = str(token_info['access_token'])
+    # album_info_dict = get_api_data(token)
+    # fill_db.fill_db(album_info_dict)
 
     # token_info = client_credentials_manager._request_access_token()
     # token_info = client_credentials_manager._add_custom_values_to_token_info(token_info)

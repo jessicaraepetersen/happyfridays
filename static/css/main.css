@@ -1,6 +1,19 @@
+/*-------------------------HappyFridays List Page----------------------------*/
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+a {
+   text-decoration: none; 
+}
+
+
 #list-body {
-/*    height: 1236px;
-    width: 1853px;*/
     background-image: url('../img/img/beyonce-bg@2x.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,37 +25,34 @@
     display: block;
     margin: 33px auto 0;
     height: 40px;
-    weight: 40px;
-}
-
-.header-div {
-    margin: 25px auto 0;
-    width: 371px;
-    height: 66px;
+    width: 40px;
 }
 
 .new-for-you-header {
     color: #282E36;
     text-decoration: none;
-    font-size: 2.25em; /*I want 36px / default browser: 16px = gives me 2.25em*/
-    font-family: Helvetica, sans-serif;
+    font-size: 2.25rem; /*I want 36px / default browser: 16px = gives me 2.25rem*/
     text-align: center;
     font-weight: normal;
+    margin-bottom: 0;
+    letter-spacing: -0.03em;
 }
 
 .new-releases-header2 {
     color: #636E7C;
     text-decoration: none;
-    font-size: .875em; /*I want 14px / default browser: 16px = gives me .875em*/
-    font-family: Helvetica, sans-serif;
+    font-size: .875rem; /*I want 14px / default browser: 16px = gives me .875rem*/
     text-align: center;
     font-weight: normal;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }   
 
 .album-cards-div {
     height: 445px;
     width: 600px;
-    margin: 75px auto;
+    margin: 32px auto;
 }
 
 .album-card {
@@ -54,33 +64,126 @@
     display: block;
 }
 
-.album-art{
+.album-card:hover {
+    box-shadow: 0px 2px 8px 0px rgba(40,46,54,0.12);
+    transition: all 250ms ease-in-out;
+}
+
+
+.album-art-div {
     height: 100px;
     width: 100px;
+    margin-right: 0;
+    float: left;
+}
+
+.album-art-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 2px 0 0 2px;
+}
+
+.album-info{
+    background-color: #FFFFFF;
     border-radius: 2px;
-    display: inline-block;
+    height: 100px;
+    width: 338px;
+    float: left;
+
+}
+
+/*This allows me to truncate the album and artist names when the */
+.truncate {
+  width: 285px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .artist-name {
     color: #282E36;
-    text-decoration: none;
-    font-size: 1.5em;  /*I want font-size 24px / default browser 16px = gives me 1.5em;*/
-    font-family: Helvetica, sans-serif;
-    margin-left: 29px;
-    margin-bottom: 80px;
-    display: inline-block;
+    font-size: 1.5rem;  /*I want font-size 24px / default browser 16px = gives me 1.5rem;*/
+    font-weight: normal;
+    margin: 20px 0 0 28px;
+    display: inline-block;  
+    line-height: 30px;
+}
+
+.artist-name a {
+    color: #282E36;
 }
 
 .album-name {
     color: #43484F;
     text-decoration: none;
-    font-size: 1em; /*I want font-size 16px / default browser 16px = 1em*/
-    font-family: Helvetica, sans-serif;
+    font-size: 1rem; /*I want font-size 16px / default browser 16px = 1rem*/
+    font-weight: normal;
+    margin-left: 28px;
+    margin-top: 1px;
+    line-height: 1.4;
+}
+
+.album-name a {
+    color: #43484F;
+}
+
+.group-of-buttons {
+    height: 100px;
+    width: 158px;
+    float: left;
 }
 
 .play-btn {
+    background-image: url('../img/icons/play.svg');
+    background-repeat: no-repeat;
     height: 20px;
     width: 14px;
-    display: fl
+    float: left;
+    margin-top: 42px;
+
 }
+
+.plus-btn {
+    background-image: url('../img/icons/plus.svg');
+    background-repeat: no-repeat;
+    height: 17px;
+    width: 17px;
+    float: left;
+    margin-top: 42px;
+    margin-left: 34px;
+}
+
+.x-btn {
+    background-image: url('../img/icons/x.svg');
+    background-repeat: no-repeat;
+    height: 16.97px;
+    width: 16.97px;
+    float: left;
+    margin-top: 42px;
+    margin-left: 34px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
