@@ -35,8 +35,8 @@
                     <img class='album-art-img' src={{ album.album_art }} alt="Image of "{{ album.album_name }} " Art">
                 </div>
                 <div class='album-info'>
-                    <h2 class='artist-name truncate'><a href={{ album.artists.link_to_artist }}>{{ album.artists.artist_name }}</a></h2>
-                    <h3 class='album-name truncate'><a href={{ album.link_to_album }}>{{ album.album_name }}</a></h3>
+                    <h2 class='artist-name truncate'><a href={{ album.artists.link_to_artist }} target='_blank;'>{{ album.artists.artist_name }}</a></h2>
+                    <h3 class='album-name truncate'><a href={{ album.link_to_album }} target='_blank;'>{{ album.album_name }}</a></h3>
                 </div>
                 <div class='group-of-buttons'>
                     <div class='play-btn' src="/static/img/icons/play.svg"></div>
@@ -46,9 +46,9 @@
             </div>
         {% endfor %}
         </div>
-        <div class='footer'>
-            <footer>site created and built by @jessicaraepetersen</footer>
-        </div>
+        <footer>
+            <p class='footer-text'>site created and built by <a href='https://github.com/jessicaraepetersen/project' target='_blank;'>@jessicaraepetersen</a></p>
+        </footer>
 
 <!--         // <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         // <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

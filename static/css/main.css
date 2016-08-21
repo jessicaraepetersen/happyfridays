@@ -5,6 +5,9 @@ body {
     font-weight: normal;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -31,7 +34,7 @@ a {
 .new-for-you-header {
     color: #282E36;
     text-decoration: none;
-    font-size: 2.25rem; /*I want 36px / default browser: 16px = gives me 2.25rem*/
+    font-size: 2.25rem; /* I want 36px / default browser: 16px = gives me 2.25rem */
     text-align: center;
     font-weight: normal;
     margin-bottom: 0;
@@ -41,18 +44,18 @@ a {
 .new-releases-header2 {
     color: #636E7C;
     text-decoration: none;
-    font-size: .875rem; /*I want 14px / default browser: 16px = gives me .875rem*/
+    font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
     text-align: center;
     font-weight: normal;
     margin-top: 6px;
+    margin-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }   
 
 .album-cards-div {
-    height: 445px;
-    width: 600px;
-    margin: 32px auto;
+    margin: 21px auto 100px;
+    flex: 1;
 }
 
 .album-card {
@@ -101,7 +104,7 @@ a {
 }
 
 .artist-name {
-    font-size: 1.5rem;  /*I want font-size 24px / default browser 16px = gives me 1.5rem;*/
+    font-size: 1.5rem;  /* I want font-size 24px / default browser 16px = gives me 1.5rem */
     font-weight: normal;
     margin: 20px 0 0 28px;
     display: inline-block;  
@@ -120,7 +123,7 @@ a {
 .album-name {
     color: #43484F;
     text-decoration: none;
-    font-size: 1rem; /*I want font-size 16px / default browser 16px = 1rem*/
+    font-size: 1rem;  /* I want font-size 16px / default browser 16px = 1rem */
     font-weight: normal;
     margin-left: 28px;
     margin-top: 0;
@@ -189,6 +192,22 @@ a {
 
 .x-btn:hover {
     background-image: url('../img/icons/x-hover.svg');
+}
+
+footer {
+    background-color: #FFFFFF;
+    height: 50px;
+}
+
+.footer-text {
+    text-transform: uppercase;
+    font-size: 0.875rem;  /* I want font-size 14px / default browser 16px = 0.875rem */
+    text-align: center;
+    text-decoration: none;
+}
+
+.footer-text a {
+    color: #4A8BF8;
 }
 
 
