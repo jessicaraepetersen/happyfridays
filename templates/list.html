@@ -29,7 +29,7 @@
         <p class='new-releases-h2'>New Releases From The Artists You Follow on Spotify</p>
         <div class='album-cards-div'>
         {% for album in albums %}
-            <div class='album-card'>
+            <div class='album-card' id='card{{ album.album_id }}'>
                 <div class='album-art-div'>
                     <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
                 </div>
@@ -48,12 +48,13 @@
                     <div class='dropdown'>
                         <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                         <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+                            <li><a href='#'>Add To A Playlist</a></li>
                         {% for playlist in playlists %}                          
                             <li><a href='#'>{{ playlist.playlist_name }}</a></li>
                         {% endfor %}
                         </ul>
                     </div>
-                    <div class='x-btn' {{ album.album_id }} alt='Remove Album Icon'></div>
+                    <div class='x-btn' data-album-id= '{{ album.album_id }}' alt='Remove Album Icon'></div>
                 </div>
             </div>
         {% endfor %}

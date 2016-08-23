@@ -4,7 +4,7 @@ import requests
 import fill_db
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, Artist, Album, Playlist, Track
+from model import connect_to_db, db, User, Artist, Album, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from api_data import get_api_data
 
