@@ -1,53 +1,59 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class='no-js' lang='en'>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta charset='utf-8'>
+        <meta http-equiv='x-ua-compatible' content='ie=edge'>
         <title>HappyFridays</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name='description' content=''>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel='apple-touch-icon' href='apple-touch-icon.png'>
         <!-- Place favicon.ico in the root directory -->
 
-        <link rel="stylesheet" href="static/css/normalize.css">
-<!--         <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6541534/6472552/css/fonts.css" /> -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link href="static/css/bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" href="static/css/main.css">
-<!--         // <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+        <link rel='stylesheet' href='static/css/normalize.css'>
+<!--         <link rel='stylesheet' type='text/css' href='https://cloud.typography.com/6541534/6472552/css/fonts.css' /> -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+        <link href='static/css/bootstrap.css' rel='stylesheet'>
+        <link rel='stylesheet' href='static/css/main.css'>
+<!--         // <script src='js/vendor/modernizr-2.8.3.min.js'></script> -->
     </head>
     <body id='list-body'>
         <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <p class='browserupgrade'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- Add your site or application content here -->
 
-        <img class='happy-fridays-icon' src="/static/img/logo/happy-fridays-icon.svg" alt='HappyFridays Icon'>
+        <img class='happy-fridays-icon' src='/static/img/logo/happy-fridays-icon.svg' alt='HappyFridays Icon'>
         <h1 class='new-for-you-h1'>New & For You</h1>
         <p class='new-releases-h2'>New Releases From The Artists You Follow on Spotify</p>
         <div class='album-cards-div'>
         {% for album in albums %}
             <div class='album-card'>
                 <div class='album-art-div'>
-                    <img class='album-art-img' src={{ album.album_art }} alt="Image of "{{ album.album_name }} " Art">
+                    <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
                 </div>
                 <div class='album-info'>
                     <h2 class='artist-name truncate'><a href={{ album.artists.link_to_artist }} target='_blank;'>{{ album.artists.artist_name }}</a></h2>
                     <h3 class='album-name truncate'><a href={{ album.link_to_album }} target='_blank;'>{{ album.album_name }}</a></h3>
                 </div>
                 <div class='group-of-buttons'>
-                    <div class='play-btn' src="/static/img/icons/play.svg"></div>
-                    <div class="dropdown">
-                        <div class='plus-btn dropdown-toggle' id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" src="/static/img/icons/plus.svg"></div>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                    <div class='dropdown'>
+                        <div class='play-btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+                            <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
+                        </ul>
+                    </div>
+                    <div class='dropdown'>
+                        <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
                         {% for playlist in playlists %}                          
-                            <li><a href="#">{{ playlist.playlist_name }}</a></li>
+                            <li><a href='#'>{{ playlist.playlist_name }}</a></li>
                         {% endfor %}
                         </ul>
                     </div>
-                    <div class='x-btn' {{ album.album_id }} src="/static/img/icons/x.svg" alt='Remove Album Icon'></div>
+                    <div class='x-btn' {{ album.album_id }} alt='Remove Album Icon'></div>
                 </div>
             </div>
         {% endfor %}
@@ -55,9 +61,9 @@
         <footer>
             <p class='footer-text'>site created and built by <a href='https://github.com/jessicaraepetersen/project' target='_blank;'>@jessicaraepetersen</a></p>
         </footer>
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="static/js/bootstrap.min.js"></script>
-        <script src="static/js/main.js"></script>
+        <script src='https://code.jquery.com/jquery.js'></script>
+        <script src='static/js/bootstrap.min.js'></script>
+        <script src='static/js/main.js'></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

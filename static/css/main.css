@@ -231,8 +231,18 @@ a {
     width: 44px;  
     float: left;
     margin-top: 29px;
-
 }
+
+.pause-btn {
+    background-image: url('../img/icons/pause.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 44px; /* The iOS standard is 44 x 44 for touch targets */
+    width: 44px;  
+    float: left;
+    margin-top: 29px;
+}
+
 
 .play-btn:hover {
     background-image: url('../img/icons/play-hover.svg');

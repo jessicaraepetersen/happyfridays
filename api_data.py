@@ -249,7 +249,7 @@ def get_api_data(token):
 
 
 
-    ################################################################################
+    ###########################################################################
     # Creates a dictionary of all the API data needed to seed the database
 
     unzipped = zip(*final_album_list)
@@ -267,12 +267,12 @@ def get_api_data(token):
         'user_id': user_id
     }
 
-    ################################################################################
+    ############################################################################
     # Helper Function
 
     def remove_duplicates(values):
-        """This function removes duplicates from a list, using set, without changing
-        the order of the items in the original list."""
+        """This function removes duplicates from a list, using set, without 
+        changing the order of the items in the original list."""
         output = []
         seen = set()
         for value in values:
@@ -290,7 +290,7 @@ def get_api_data(token):
     artist_links = remove_duplicates(artist_links)
 
 
-    ################################################################################
+    ############################################################################
     # Add artist info to album info dict
 
     album_info_dict['artist_ids_no_duplicates'] = artist_ids_no_duplicates
