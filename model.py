@@ -1,5 +1,9 @@
 """Models and database functions for HappyFridays project."""
 
+import requests.packages.urllib3
+requests.packages.urllib3.disable_warnings()
+
+
 from flask_sqlalchemy import SQLAlchemy
 
 # This is the connection to the PostgreSQL database; we're getting this through

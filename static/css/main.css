@@ -34,10 +34,10 @@ a {
     width: 216px;
     margin-top: 55px;
     margin-left: 80px;
+    margin-bottom: 126px;
 }
 
 .content-div {
-    margin-top: 126px;
     margin-left: 80px;
     width: 650px;
 }
@@ -48,7 +48,8 @@ a {
     color: #FFFFFF;
     letter-spacing: 0.00em; 
     height: 86px;
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 27px;
 }
 
 .home-p {
@@ -57,8 +58,8 @@ a {
     color: #FFFFFF;
     letter-spacing: 0px;
     line-height: 28px;
-    margin-top: 27px;
-    margin-bottom: 0;
+    margin-top: 0px;
+    margin-bottom: 48px;
     width: 529px;
 }
 
@@ -66,22 +67,28 @@ a {
 .spotify-btn a {
     background: #2EBD59;
     border-radius: 24px;
-    margin-top: 48px;
     text-transform: uppercase;
+    text-align: center;
     color: #FFFFFF;
-    font-size: .87rem; /* I want 16px / default browser: 16px = gives me 1rem */
+    font-size: .75rem; 
+    font-weight: 600;  /*600 is medium font-weight*/
+    letter-spacing: .06em;
     display: block;
     width: 240px;
-    height: 32px;
-    text-align: center;
-    padding-top: 0;
+    height: 42px;
+    padding-top: 6px;
 }
 
 .spotify-btn a::before {
     content: url(../img/icons/spotify.svg);
-    margin-right: 10px;
+    margin-right: 11px;
     position: relative;
     top: 5px;
+}
+
+.spotify-btn a:hover {
+    background: #27A34C;
+    transition: all 160ms ease-in;
 }
 
 
@@ -124,14 +131,14 @@ a {
 }   
 
 .album-cards-div {
-    margin: 21px auto 100px;
+    margin: 19px auto 100px;
     flex: 1;
 }
 
 .album-card {
     height: 100px;
     width: 600px;
-    margin: 15px auto;
+    margin: 16px auto;
     border-radius: 2px;
     background-color: #FFFFFF;
     display: block;
@@ -229,7 +236,7 @@ a {
 
 .play-btn:hover {
     background-image: url('../img/icons/play-hover.svg');
-
+    cursor: pointer;
 }
 
 .plus-btn {
@@ -246,14 +253,14 @@ a {
 
 .plus-btn:hover {
     background-image: url('../img/icons/plus-hover.svg');
-    
+    cursor: pointer;
 }
 
 .x-btn {
     background-image: url('../img/icons/x.svg');
     background-repeat: no-repeat;
     background-position: center;
-    height: 44px;  /* The iOS standard is 44 x 44 for touch targets */
+    height: 44px;   /*The iOS standard is 44 x 44 for touch targets */
     width: 44px;
     float: left;
     margin-top: 29px;
@@ -262,6 +269,7 @@ a {
 
 .x-btn:hover {
     background-image: url('../img/icons/x-hover.svg');
+    cursor: pointer;
 }
 
 footer {
@@ -271,7 +279,7 @@ footer {
 
 .footer-text {
     text-transform: uppercase;
-    font-size: 0.875rem;  /* I want font-size 14px / default browser 16px = 0.875rem */
+    font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */   
     text-align: center;
     text-decoration: none;
 }

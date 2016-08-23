@@ -57,9 +57,10 @@ def callback():
     # if is_token_expired == True
 
     albums = db.session.query(Album).join(Album.artists).order_by(Artist.artist_sorted_name).all()
+    playlists = db.session.query(Playlist).order_by(Playlist.playlist_name).all()
 
     # return render_template("connecting.html")
-    return render_template("list.html", albums=albums)
+    return render_template("list.html", albums=albums, playlists=playlists)
 
 # @app.route('/list')
 # def list():
