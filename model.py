@@ -140,6 +140,7 @@ def empty_tables(table_name, userid):
         db.session.rollback()
 
 
+
 def connect_to_db(app):
     """Connect the database to Flask app."""
 

@@ -56,7 +56,7 @@ a {
     opacity: 0.85;
     font-size: 1.06rem; /* I want 17px / default browser: 16px = gives me 1.06rem */
     color: #FFFFFF;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     line-height: 28px;
     margin-top: 0px;
     margin-bottom: 48px;
@@ -265,6 +265,16 @@ a {
     background-image: url('../img/icons/plus-hover.svg');
     cursor: pointer;
 }
+
+
+.add-to-playlist {
+    text-transform: uppercase;
+    font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */  
+    color: #43484F;
+    letter-spacing: 0.03em;
+    background: #E9F6FD;
+}
+
 
 .x-btn {
     background-image: url('../img/icons/x.svg');

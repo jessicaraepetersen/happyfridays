@@ -45,12 +45,12 @@
                             <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
                         </ul>
                     </div>
-                    <div class='dropdown'>
+                    <div class='dropdown playlist-dropdown'>
                         <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
-                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
-                            <li><a href='#'>Add To A Playlist</a></li>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                            <li><a class='add-to-playlist' href='#'>Add To A Playlist</a></li>
                         {% for playlist in playlists %}                          
-                            <li><a href='#'>{{ playlist.playlist_name }}</a></li>
+                            <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                         {% endfor %}
                         </ul>
                     </div>

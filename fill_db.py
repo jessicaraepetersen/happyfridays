@@ -126,7 +126,7 @@ def fill_db(album_info_dict):
 
 if __name__ == "__main__":
     connect_to_db(app)
-    db.create_all()
+    # db.create_all()
 
 
 

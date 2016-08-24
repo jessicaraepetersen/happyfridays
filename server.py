@@ -2,11 +2,14 @@
 import os # To access my OS environment variables, specifically spotify client id
 import requests
 import fill_db
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, render_template_string, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Artist, Album, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
+import spotipy 
+import spotipy.util as util
 from api_data import get_api_data
+from random import random
 
 
 
@@ -34,7 +37,6 @@ client_credentials_manager = SpotifyClientCredentials()
 @app.route('/') 
 def index():
     """Homepage."""
-    # url = "https://accounts.spotify.com/authorize/?response_type=code&show_dialog=true&client_id="+ client_id +"&redirect_uri=http://localhost:5000/callback&scope=user-follow-read%20user-read-private%20playlist-read-private%20playlist-read-collaborative%20playlist-modify-public%20playlist-modify-private"
 
     url1 = api.get_authorize_url()
     url = url1+'&show_dialog=true'
@@ -43,34 +45,95 @@ def index():
 
 @app.route('/callback')
 def callback():
-    """Homepage."""
+    """List of new release albums by artists the user follows."""
 
     code = request.args.get('code')
-    # token_info = api.get_access_token(code)
-    # token = str(token_info['access_token'])
-    # album_info_dict = get_api_data(token)
-    # fill_db.fill_db(album_info_dict)
+    token_info = api.get_access_token(code)
+    token = str(token_info['access_token'])
+    session['token'] = token
+    return redirect('/list') 
 
-    # token_info = client_credentials_manager._request_access_token()
-    # token_info = client_credentials_manager._add_custom_values_to_token_info(token_info)
-    # is_token_expired = client_credentials_manager._is_token_expired(token_info)
-    # if is_token_expired == True
 
+@app.route('/list')
+def list():
+    """List of new release albums by artists the user follows."""
+
+
+    if 'token' not in session:
+        return redirect('/') 
+
+    token = session['token']
+
+    if session.get('albumsdone'):
+        # album_info_dict = session['albumdata']
+        pass
+    else:
+        album_info_dict = get_api_data(token)
+        fill_db.fill_db(album_info_dict)
+        # user_id = album_info_dict['user_id']
+
+        session['albumsdone'] = True
+        session['user_id'] = album_info_dict['user_id']
+        # session['albumdata'] = album_info_dict
+
+    user_id = session['user_id']
+
+    # For testing:
     albums = db.session.query(Album).join(Album.artists).order_by(Artist.artist_sorted_name).all()
     playlists = db.session.query(Playlist).order_by(Playlist.playlist_name).all()
 
+    # For the app
+    # albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
+    # playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
+
     # return render_template("connecting.html")
-    return render_template("list.html", albums=albums, playlists=playlists)
 
-# @app.route('/list')
-# def list():
-#     """Homepage."""
+    # return render_template("list.html")
+    return render_template("list.html", albums=albums, playlists=playlists)  
 
 
+@app.route('/clear')
+def clear():
+    """Clears SQL tables."""
 
-#     return render_template("list.html")
+    # if session['userid'] != 'sklfjsdlk':
+    #     return redirect('/?failure')
 
+    db.session.query(Track).delete()
+    db.session.query(Playlist).delete()
+    db.session.query(Album).delete() 
+    db.session.query(Artist).delete() 
+    db.session.query(User).delete() 
+
+    db.session.commit()
+
+    return redirect('/') 
+
+
+@app.route('/add-to-playlist', methods=['POST'])
+def add_to_playlist():
+    """Add album to playlist."""
+
+    token = session['token']
+    print '-------TOKEN--------'
+    print token
+    user_id = session['user_id']
+    playlist_id = request.form.get('playlist_id')
+    album_id = request.form.get('album_id')
     
+
+    tracks = db.session.query(Track).join(Track.albums).filter_by(album_id=album_id).all()
+    list_of_track_uris = []
+    for track in tracks:
+        list_of_track_uris.append(track.album_track_uri)
+
+    if token:
+        print "The token exists to add tracks to playlist!"
+        sp = spotipy.Spotify(auth=token)
+        sp.user_playlist_add_tracks(user_id, playlist_id, list_of_track_uris)
+
+    return 'The album has been added to the playlist.'
+   
 
 if __name__ == "__main__":
     # Set debug=True here since it has to be True at the point
