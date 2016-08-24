@@ -38,7 +38,6 @@
                     <h3 class='album-name truncate'><a href={{ album.link_to_album }} target='_blank;'>{{ album.album_name }}</a></h3>
                 </div>
                 <div class='group-of-buttons'>
-
                     <div class='dropdown'>
                         <div class='play-btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                         <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
@@ -48,7 +47,7 @@
                     <div class='dropdown playlist-dropdown'>
                         <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                         <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
-                            <li><a class='add-to-playlist' href='#'>Add To A Playlist</a></li>
+                            <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
                         {% for playlist in playlists %}                          
                             <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                         {% endfor %}

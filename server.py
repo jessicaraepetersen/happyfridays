@@ -45,50 +45,34 @@ def index():
 
 @app.route('/callback')
 def callback():
-    """List of new release albums by artists the user follows."""
+    """Authorizes the user by retrieving callback url code and exchanging the 
+    code for an authorization token."""
 
     code = request.args.get('code')
     token_info = api.get_access_token(code)
     token = str(token_info['access_token'])
     session['token'] = token
-    return redirect('/list') 
+    return render_template('building.html') 
 
 
 @app.route('/list')
 def list():
     """List of new release albums by artists the user follows."""
 
-
     if 'token' not in session:
-        return redirect('/') 
+    return redirect('/') 
 
     token = session['token']
 
-    if session.get('albumsdone'):
-        # album_info_dict = session['albumdata']
-        pass
-    else:
+    if token:
         album_info_dict = get_api_data(token)
         fill_db.fill_db(album_info_dict)
-        # user_id = album_info_dict['user_id']
-
-        session['albumsdone'] = True
         session['user_id'] = album_info_dict['user_id']
-        # session['albumdata'] = album_info_dict
+        user_id = session['user_id']
 
-    user_id = session['user_id']
+    albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
+    playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
 
-    # For testing:
-    albums = db.session.query(Album).join(Album.artists).order_by(Artist.artist_sorted_name).all()
-    playlists = db.session.query(Playlist).order_by(Playlist.playlist_name).all()
-
-    # For the app
-    # albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
-    # playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
-
-    # return render_template("connecting.html")
-
-    # return render_template("list.html")
     return render_template("list.html", albums=albums, playlists=playlists)  
 
 
@@ -132,7 +116,8 @@ def add_to_playlist():
         sp = spotipy.Spotify(auth=token)
         sp.user_playlist_add_tracks(user_id, playlist_id, list_of_track_uris)
 
-    return 'The album has been added to the playlist.'
+    return 'The album has been added to your Spotify playlist!'
+
    
 
 if __name__ == "__main__":

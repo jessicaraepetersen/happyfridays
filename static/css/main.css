@@ -267,12 +267,14 @@ a {
 }
 
 
-.add-to-playlist {
+#add-to-playlist {
     text-transform: uppercase;
     font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */  
     color: #43484F;
     letter-spacing: 0.03em;
     background: #E9F6FD;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
 
