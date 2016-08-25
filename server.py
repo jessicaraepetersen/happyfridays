@@ -49,9 +49,9 @@ def callback():
     code for an authorization token."""
 
     code = request.args.get('code')
-    token_info = api.get_access_token(code)
-    token = str(token_info['access_token'])
-    session['token'] = token
+    # token_info = api.get_access_token(code)
+    # token = str(token_info['access_token'])
+    # session['token'] = token
     return render_template('building.html') 
 
 
@@ -60,7 +60,7 @@ def list():
     """List of new release albums by artists the user follows."""
 
     if 'token' not in session:
-    return redirect('/') 
+        return redirect('/') 
 
     token = session['token']
 

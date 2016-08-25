@@ -76,7 +76,7 @@ a {
     display: block;
     width: 240px;
     height: 42px;
-    padding-top: 6px;
+    padding-top: 7px;
 }
 
 .spotify-btn a::before {
@@ -90,6 +90,120 @@ a {
     background: #27A34C;
     transition: all 160ms ease-in;
 }
+
+/*-------------------------HappyFridays Loading Page--------------------------*/
+
+
+#loading-body {
+    background-image: url('../img/img/bob-dylan-bg@2x.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #C0E8F7;
+}
+
+.happy-fridays-icon-loading {
+    display: block;
+    margin: 33px auto 125px;
+    height: 40px;
+    width: 40px;
+
+}
+
+.entire-loading-message {
+    flex: 1;
+}
+
+.building-list-h1 {
+    color: #282E36;
+    height: 43px;
+    width: 555px;
+    font-size: 2.25rem;  /* I want 36px / default browser: 16px = gives me 2.25rem */
+    font-weight: normal;
+    margin: 0 auto 9px;
+}
+    
+.time-to-load {
+    height: 17px;
+    width: 285px;
+    color: #636E7C;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
+    font-weight: 600;
+    margin: 0 auto 43px;
+}
+
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+@keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+
+.loading-pulse {
+  position: relative;
+  width: 6px;
+  height: 24px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-animation: pulse 750ms infinite;
+          animation: pulse 750ms infinite;
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+}
+
+.loading-pulse:before, .loading-pulse:after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 16px;
+  width: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-animation: pulse 750ms infinite;
+          animation: pulse 750ms infinite;
+}
+
+.loading-pulse:before {
+  left: -12px;
+}
+
+.loading-pulse:after {
+  left: 12px;
+  -webkit-animation-delay: 500ms;
+          animation-delay: 500ms;
+}
+
 
 
 /*-------------------------HappyFridays List Page----------------------------*/
@@ -296,14 +410,17 @@ a {
 
 footer {
     background-color: #FFFFFF;
-    height: 50px;
+    height: 46px;
 }
 
 .footer-text {
+    color: #636E7C;
     text-transform: uppercase;
     font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */   
     text-align: center;
     text-decoration: none;
+    letter-spacing: 0.04em;
+    margin: 15px auto 13px;
 }
 
 .footer-text a {
