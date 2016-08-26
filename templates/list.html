@@ -14,7 +14,6 @@
 <!--         <link rel='stylesheet' type='text/css' href='https://cloud.typography.com/6541534/6472552/css/fonts.css' /> -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
         <link href='static/css/bootstrap.css' rel='stylesheet'>
-        <link rel='stylesheet' href='static/css/animate.min.css'>
         <link rel='stylesheet' href='static/css/main.css'>
 <!--         // <script src='js/vendor/modernizr-2.8.3.min.js'></script> -->
     </head>
@@ -40,7 +39,7 @@
                 </div>
                 <div class='group-of-buttons'>
                     <div class='dropdown'>
-                        <div class='play-btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <div class='play-btn dropdown-toggle' id='dropdownMenu1' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                         <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
                             <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
                         </ul>

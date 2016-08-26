@@ -353,6 +353,12 @@ and artist names when they are too long */
     margin-top: 29px;
 }
 
+.play-btn:hover {
+    background-image: url('../img/icons/play-hover.svg');
+    cursor: pointer;
+}
+
+
 .pause-btn {
     background-image: url('../img/icons/pause.svg');
     background-repeat: no-repeat;
@@ -363,11 +369,11 @@ and artist names when they are too long */
     margin-top: 29px;
 }
 
-
-.play-btn:hover {
-    background-image: url('../img/icons/play-hover.svg');
+.pause-btn:hover {
+    background-image: url('../img/icons/pause-hover.svg');
     cursor: pointer;
 }
+
 
 .plus-btn {
     background-image: url('../img/icons/plus.svg');
