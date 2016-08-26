@@ -302,14 +302,7 @@ def get_api_data(token):
 
 # album_info_dict = get_api_data(token)
 
-################################################################################
-# if token:
-#     print "The token exists!"
-#     sp = spotipy.Spotify(auth=token)
-#     user_playlist_add_tracks(user_id, playlist_id, track_ids)
 
-################################################################################
-#   Helper Functions
 
 
 

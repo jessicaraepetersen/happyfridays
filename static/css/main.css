@@ -119,9 +119,9 @@ a {
 .building-list-h1 {
     color: #282E36;
     height: 43px;
-    width: 555px;
     font-size: 2.25rem;  /* I want 36px / default browser: 16px = gives me 2.25rem */
     font-weight: normal;
+    text-align: center;
     margin: 0 auto 9px;
 }
     
@@ -137,88 +137,6 @@ a {
 }
 
 /*----------Animated Loader------------*/
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@-webkit-keyframes pulse {
-  50% {
-    background: white;
-  }
-}
-@keyframes pulse {
-  50% {
-    background: white;
-  }
-}
-
-.loading-pulse {
-  position: relative;
-  width: 6px;
-  height: 24px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-animation: pulse 750ms infinite;
-          animation: pulse 750ms infinite;
-  -webkit-animation-delay: 250ms;
-          animation-delay: 250ms;
-}
-
-.loading-pulse:before, .loading-pulse:after {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 16px;
-  width: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  -webkit-animation: pulse 750ms infinite;
-          animation: pulse 750ms infinite;
-}
-
-.entire-loading-message {
-    flex: 1;
-}
-
-.building-list-h1 {
-    color: #282E36;
-    height: 43px;
-    width: 555px;
-    font-size: 2.25rem;  /* I want 36px / default browser: 16px = gives me 2.25rem */
-    font-weight: normal;
-    margin: 0 auto 9px;
-}
-    
-.time-to-load {
-    height: 17px;
-    width: 285px;
-    color: #636E7C;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
-    font-weight: 600;
-    margin: 0 auto 43px;
-}
 
 
 @-webkit-keyframes spin {
@@ -489,9 +407,10 @@ and artist names when they are too long */
     background-color: #4A8BF8;
     border-radius: 4px;
     position: fixed;
-    left: 31%;
-    margin: 20px auto 0;
+    left: 50%;
+    margin: 20px 0 0 -270px;    /*270 is half of 540px width*/
     box-shadow: 0px 2px 8px 0px rgba(40,46,54,0.12);
+    z-index: 1000;
 }
 
 #album-added-message {
@@ -500,71 +419,6 @@ and artist names when they are too long */
     text-align: center;
     margin: 10px auto 0;
 }
-
-.fadeInDown {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-}
-
-@-webkit-keyframes fadeInDownBig {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -2000px, 0);
-    transform: translate3d(0, -2000px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeInDownBig {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -2000px, 0);
-    transform: translate3d(0, -2000px, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-
-.fadeOutUp {
-  -webkit-animation-name: fadeOutUp;
-  animation-name: fadeOutUp;
-}
-
-@-webkit-keyframes fadeOutUpBig {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -2000px, 0);
-    transform: translate3d(0, -2000px, 0);
-  }
-}
-
-@keyframes fadeOutUpBig {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -2000px, 0);
-    transform: translate3d(0, -2000px, 0);
-  }
-}
-
-/*--------End of Album Added to Playlist Message---------*/
 
 
 #add-to-playlist {

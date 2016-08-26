@@ -10,23 +10,35 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
         <link rel="stylesheet" href="./static/css/normalize.css">
         <link rel="stylesheet" href="./static/css/main.css">
 <!--         // <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
     </head>
-    <body id='home-body'>
+    <body id='loading-body'>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <img class='home-logo' src="/static/img/logo/happy-fridays-logo.svg" alt='HappyFridays Logo'>
-        <div class='content-div'>
-            <h1 class='home-h1'>Every Friday, discover the new releases from the artists you follow
-            on Spotify.</h1>
-             <p class='home-p'>Instead of relying purely on Spotify notifications or combing through the New Release section every Friday, connect your Spotify account and get a list of the new releases from the artists you follow. Then, add the new release to a playlist for later or listen right away.</p>
-             <div class='spotify-btn'><a href={{ url }}>Sign In With Spotify</a></div>
+        <img class='happy-fridays-icon-loading' src='/static/img/logo/happy-fridays-icon.svg' alt='HappyFridays Icon'>
+        <div class='entire-loading-message'>
+            <h1 class='building-list-h1'>Building your list of new releases...</h1>
+            <h4 class='time-to-load'>This may take up to 30 seconds</h4>
+            <div class='loading-pulse'></div>
         </div>
+
+        <footer>
+            <p class='footer-text'>site created and built by <a href='https://github.com/jessicaraepetersen/project' target='_blank;'>@jessicaraepetersen</a></p>
+        </footer>
+
+
+        <script src='https://code.jquery.com/jquery.js'></script>
+        <script>
+            $(document).ready(function() {
+                window.location.replace('/list');
+            });
+        </script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

@@ -5,6 +5,12 @@
 //     $('#dropdownMenu1').addClass('pause-btn');
 // });
 
+// $('.play-btn').click(function(evt) {
+//     var album_id = $(this).data('albumId');
+//     if $('#intro-par').hasClass('fancy');
+//     $('#card' + album_id ).remove();
+// });
+
 
 // #############################################################################
 // Remove div album card upon clicking the x button
@@ -31,9 +37,10 @@ function showFlashMessage(result) {
 
 
     $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name)
-    $("#album-added-box").fadeIn(1000);
-    setTimeout(function() {$('#album-added-box').fadeOut(1000);}, 3000);         
+    $("#album-added-box").fadeIn(250);
+    setTimeout(function() {$('#album-added-box').fadeOut(250);}, 3000);         
 }
+
 
 function addAlbumToPlaylist(evt) {
     evt.preventDefault();

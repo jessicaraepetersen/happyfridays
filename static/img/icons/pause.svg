@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="9px" height="16px" viewBox="0 0 9 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>plus</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="happy-fridays-list@2x" transform="translate(-853.000000, -353.000000)" fill="#282E36">
+            <g id="Cards" transform="translate(340.000000, 196.000000)">
+                <g id="Chance" transform="translate(0.000000, 115.000000)">
+                    <path d="M513,42 L515,42 L515,58 L513,58 L513,42 Z M522,42 L522,58 L520,58 L520,42 L522,42 Z" id="plus"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
