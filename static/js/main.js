@@ -17,6 +17,7 @@ $('.x-btn').click(function(evt) {
 
 
 // #############################################################################
+<<<<<<< HEAD
 // A user can add all the tracks of an album to one of their playlists of choice
 // and a message will appear at the top of the html page alerting the user of the
 // event.
@@ -34,6 +35,12 @@ function showFlashMessage(result) {
     $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name)
     $("#album-added-box").fadeIn(1000);
     setTimeout(function() {$('#album-added-box').fadeOut(1000);}, 3000);         
+=======
+// A user can add all the tracks of an album to one of their playlists of choice.
+
+function showFlashMessage(result) {
+
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 }
 
 

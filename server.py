@@ -2,7 +2,11 @@
 import os # To access my OS environment variables, specifically spotify client id
 import requests
 import fill_db
+<<<<<<< HEAD
 from flask import Flask, render_template, render_template_string, request, redirect, session, jsonify
+=======
+from flask import Flask, render_template, render_template_string, request, flash, redirect, session
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Artist, Album, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
@@ -49,9 +53,15 @@ def callback():
     code for an authorization token."""
 
     code = request.args.get('code')
+<<<<<<< HEAD
     token_info = api.get_access_token(code)
     token = str(token_info['access_token'])
     session['token'] = token
+=======
+    # token_info = api.get_access_token(code)
+    # token = str(token_info['access_token'])
+    # session['token'] = token
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
     return render_template('building.html') 
 
 
@@ -64,6 +74,7 @@ def list():
 
     token = session['token']
 
+<<<<<<< HEAD
     if session.get('albumsdone'):
         pass
 
@@ -75,6 +86,13 @@ def list():
         
 
     user_id = session['user_id']
+=======
+    if token:
+        album_info_dict = get_api_data(token)
+        fill_db.fill_db(album_info_dict)
+        session['user_id'] = album_info_dict['user_id']
+        user_id = session['user_id']
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 
     albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
     playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
@@ -82,6 +100,7 @@ def list():
     return render_template("list.html", albums=albums, playlists=playlists)  
 
 
+<<<<<<< HEAD
 
 @app.route('/clear')
 def clear():
@@ -100,6 +119,25 @@ def clear():
 
     return redirect('/') 
 
+=======
+@app.route('/clear')
+def clear():
+    """Clears SQL tables."""
+
+    # if session['userid'] != 'sklfjsdlk':
+    #     return redirect('/?failure')
+
+    db.session.query(Track).delete()
+    db.session.query(Playlist).delete()
+    db.session.query(Album).delete() 
+    db.session.query(Artist).delete() 
+    db.session.query(User).delete() 
+
+    db.session.commit()
+
+    return redirect('/') 
+
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 
 @app.route('/add-to-playlist', methods=['POST'])
 def add_to_playlist():
@@ -123,6 +161,7 @@ def add_to_playlist():
         sp = spotipy.Spotify(auth=token)
         sp.user_playlist_add_tracks(user_id, playlist_id, list_of_track_uris)
 
+<<<<<<< HEAD
     playlist = Playlist.query.filter_by(playlist_id=playlist_id).all()
     playlist_name = str(playlist[0].playlist_name)
 
@@ -130,6 +169,9 @@ def add_to_playlist():
     album_name = str(album[0].album_name)
 
     return jsonify({'playlist_name': playlist_name, 'album_name': album_name})
+=======
+    return 'The album has been added to your Spotify playlist!'
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 
    
 

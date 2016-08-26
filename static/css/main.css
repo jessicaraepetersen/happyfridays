@@ -110,6 +110,7 @@ a {
     width: 40px;
 
 }
+<<<<<<< HEAD
 
 .entire-loading-message {
     flex: 1;
@@ -195,6 +196,92 @@ a {
           animation: pulse 750ms infinite;
 }
 
+=======
+
+.entire-loading-message {
+    flex: 1;
+}
+
+.building-list-h1 {
+    color: #282E36;
+    height: 43px;
+    width: 555px;
+    font-size: 2.25rem;  /* I want 36px / default browser: 16px = gives me 2.25rem */
+    font-weight: normal;
+    margin: 0 auto 9px;
+}
+    
+.time-to-load {
+    height: 17px;
+    width: 285px;
+    color: #636E7C;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
+    font-weight: 600;
+    margin: 0 auto 43px;
+}
+
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+@keyframes pulse {
+  50% {
+    background: white;
+  }
+}
+
+.loading-pulse {
+  position: relative;
+  width: 6px;
+  height: 24px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-animation: pulse 750ms infinite;
+          animation: pulse 750ms infinite;
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+}
+
+.loading-pulse:before, .loading-pulse:after {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 16px;
+  width: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-animation: pulse 750ms infinite;
+          animation: pulse 750ms infinite;
+}
+
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 .loading-pulse:before {
   left: -12px;
 }
@@ -205,7 +292,10 @@ a {
           animation-delay: 500ms;
 }
 
+<<<<<<< HEAD
 /*----------End of Animated Loader------------*/
+=======
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 
 
 /*-------------------------HappyFridays List Page----------------------------*/
@@ -381,6 +471,7 @@ and artist names when they are too long */
 .plus-btn:hover {
     background-image: url('../img/icons/plus-hover.svg');
     cursor: pointer;
+<<<<<<< HEAD
 }
 
 
@@ -482,6 +573,21 @@ and artist names when they are too long */
 
 /*--------End of Album Added to Playlist Message---------*/
 
+=======
+}
+
+
+#add-to-playlist {
+    text-transform: uppercase;
+    font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */  
+    color: #43484F;
+    letter-spacing: 0.03em;
+    background: #E9F6FD;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+>>>>>>> 999764c6e86b279eee12e6fed54a0d53e75d19c2
 
 .x-btn {
     background-image: url('../img/icons/x.svg');
