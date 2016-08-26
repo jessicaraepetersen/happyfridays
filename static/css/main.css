@@ -135,6 +135,7 @@ a {
     margin: 0 auto 43px;
 }
 
+/*----------Animated Loader------------*/
 
 @-webkit-keyframes spin {
   0% {
@@ -204,6 +205,7 @@ a {
           animation-delay: 500ms;
 }
 
+/*----------End of Animated Loader------------*/
 
 
 /*-------------------------HappyFridays List Page----------------------------*/
@@ -286,7 +288,8 @@ a {
 
 }
 
-/*This allows me to truncate the album and artist names when they are too long */
+/*This allows me to truncate the album 
+and artist names when they are too long */
 .truncate {
   width: 285px;
   white-space: nowrap;
@@ -390,6 +393,94 @@ a {
     padding-top: 6px;
     padding-bottom: 6px;
 }
+
+
+/*--------Album Added to Playlist Message---------*/
+
+
+#album-added-box {
+
+    height: 40px;
+    width: 540px;
+    background-color: #4A8BF8;
+    border-radius: 4px;
+    position: fixed;
+    left: 31%;
+    margin: 20px auto 0;
+    box-shadow: 0px 2px 8px 0px rgba(40,46,54,0.12);
+}
+
+#album-added-message {
+    color: #FFFFFF;
+    font-size: .938rem;    /*I want font-size 15px / default browser 16px = 0.938rem */ 
+    text-align: center;
+    margin: 10px auto 0;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+
+.fadeOutUp {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp;
+}
+
+@-webkit-keyframes fadeOutUpBig {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+
+@keyframes fadeOutUpBig {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -2000px, 0);
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+
+/*--------End of Album Added to Playlist Message---------*/
 
 
 .x-btn {

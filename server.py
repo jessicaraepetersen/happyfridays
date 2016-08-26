@@ -2,7 +2,7 @@
 import os # To access my OS environment variables, specifically spotify client id
 import requests
 import fill_db
-from flask import Flask, render_template, render_template_string, request, flash, redirect, session
+from flask import Flask, render_template, render_template_string, request, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Artist, Album, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
@@ -49,9 +49,9 @@ def callback():
     code for an authorization token."""
 
     code = request.args.get('code')
-    # token_info = api.get_access_token(code)
-    # token = str(token_info['access_token'])
-    # session['token'] = token
+    token_info = api.get_access_token(code)
+    token = str(token_info['access_token'])
+    session['token'] = token
     return render_template('building.html') 
 
 
@@ -64,16 +64,23 @@ def list():
 
     token = session['token']
 
-    if token:
+    if session.get('albumsdone'):
+        pass
+
+    else:   
         album_info_dict = get_api_data(token)
         fill_db.fill_db(album_info_dict)
         session['user_id'] = album_info_dict['user_id']
-        user_id = session['user_id']
+        session['albumsdone'] = True
+        
+
+    user_id = session['user_id']
 
     albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
     playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
 
     return render_template("list.html", albums=albums, playlists=playlists)  
+
 
 
 @app.route('/clear')
@@ -116,7 +123,13 @@ def add_to_playlist():
         sp = spotipy.Spotify(auth=token)
         sp.user_playlist_add_tracks(user_id, playlist_id, list_of_track_uris)
 
-    return 'The album has been added to your Spotify playlist!'
+    playlist = Playlist.query.filter_by(playlist_id=playlist_id).all()
+    playlist_name = str(playlist[0].playlist_name)
+
+    album = Album.query.filter_by(album_id=album_id).all()
+    album_name = str(album[0].album_name)
+
+    return jsonify({'playlist_name': playlist_name, 'album_name': album_name})
 
    
 
