@@ -46,7 +46,7 @@
                     </div>
                     <div class='dropdown playlist-dropdown'>
                         <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
-                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                        <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu2'>
                             <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
                         {% for playlist in playlists %}                          
                             <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>

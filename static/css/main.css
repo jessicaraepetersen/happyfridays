@@ -23,10 +23,8 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-    background-color: #C0E8F7;
-    
+    background-color: #C0E8F7; 
 }
-
 
 .home-logo {
     display: block;
@@ -63,7 +61,6 @@ a {
     margin-bottom: 48px;
     width: 529px;
 }
-
 
 .spotify-btn a {
     background: #2EBD59;
@@ -111,7 +108,6 @@ a {
     width: 40px;
 
 }
-
 
 .entire-loading-message {
     flex: 1;
@@ -268,7 +264,6 @@ a {
     transition: all 200ms ease-in;
 }
 
-
 .album-art-div {
     height: 100px;
     width: 100px;
@@ -288,7 +283,6 @@ a {
     height: 100px;
     width: 328px;
     float: left;
-
 }
 
 /*This allows me to truncate the album 
@@ -401,6 +395,14 @@ and artist names when they are too long */
     background: #E9F6FD;
     padding-top: 6px;
     padding-bottom: 6px;
+}
+
+
+/* Makes the playlist dropdown scrollable */ 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 
 
