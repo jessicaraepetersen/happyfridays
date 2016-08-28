@@ -225,30 +225,27 @@ if token:
     artist_ids = list(unzipped[1])
     #calculates the number of times to loop through the list
     loop_thru = int(ceil(float(len(album_ids)) / 20.0))  
-    album_names = []
-    album_art_300 = []
-    album_links = []
-    artist_names = []
-    artist_sorted_names = []
-    artist_links = []
+    albums = []
     album_track_uris = []
     for i in range(loop_thru):
         sp = spotipy.Spotify(auth=token)
         album_info_results = sp.albums(album_ids[0:20])
         del album_ids[:20]
         for i in range(len(album_info_results['albums'])):
-            album_names.append(special_char(album_info_results['albums'][i]['name']))
-            album_links.append(str(album_info_results['albums'][i]['external_urls']['spotify']))
-            album_art_300.append(str(album_info_results['albums'][i]['images'][1]['url']))
-            artist_names.append(special_char(album_info_results['albums'][i]['artists'][0]['name']))
-            artist_sorted_names.append(move_the(special_char(album_info_results['albums'][i]['artists'][0]['name'])))
-            artist_links.append(str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify']))
+            current_dict = 
+            {'album_name': special_char(album_info_results['albums'][i]['name']),
+            'album_link': str(album_info_results['albums'][i]['external_urls']['spotify']),
+            'album_art_300': str(album_info_results['albums'][i]['images'][1]['url']),
+            'artist_name': special_char(album_info_results['albums'][i]['artists'][0]['name']),
+            'artist_sorted_name': move_the(special_char(album_info_results['albums'][i]['artists'][0]['name'])),
+            'artist_link': str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify'])}
             #gets a list of album track URIs
             num_of_tracks = len(album_info_results['albums'][i]['tracks']['items'])
             list_of_current_album_track_uris = []
             for x in range(num_of_tracks):
                 list_of_current_album_track_uris.append(str(album_info_results['albums'][i]['tracks']['items'][x]['uri']))
-            album_track_uris.append(list_of_current_album_track_uris)
+            current_dict['album_track_uris'] = list_of_current_album_track_uris
+            albums.append(current_dict)
 
 else:
     print "Can't get token for", username
@@ -343,7 +340,7 @@ artist_links = remove_duplicates(artist_links)
 
 
 ################################################################################
-# Creates a dictionary of all the API data needed to seed the database
+# Creates a dictionary of all the API data needed to fill the database
 
 artist_info_dict = {
     'artist_ids': artist_ids_no_duplicates,

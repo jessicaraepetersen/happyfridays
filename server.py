@@ -9,7 +9,6 @@ from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy.util as util
 import spotipy 
 from api_data import get_api_data
-# from random import random
 
 
 # prevents a non-essential warning
@@ -30,8 +29,7 @@ redirect_uri=os.getenv('SPOTIPY_REDIRECT_URI')
 # the Spotify scope authorization for the user
 scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
 
-# using the Spotipy python library to instantiate api as an instance of the 
-# SpotifyOAuth class
+# use Spotipy python library to instantiate api as an instance of SpotifyOAuth class
 api = SpotifyOAuth(client_id, client_secret, redirect_uri, scope=scope)
 client_credentials_manager = SpotifyClientCredentials()
 
@@ -69,17 +67,22 @@ def list():
         return redirect('/') 
     # store token in sesssion
     token = session['token']
-    # if album list is built, prevents rebuilding on refresh
-    if session.get('albumsdone'):
-        pass
-    else:   
-        # use token to query spotify api for data 
-        album_info_dict = get_api_data(token)
-        # fill db and model with data
-        fill_db.fill_db(album_info_dict)
-        session['user_id'] = album_info_dict['user_id']
-        # alerts the session album list is built
-        session['albumsdone'] = True
+    if token:
+        sp = spotipy.Spotify(auth=token)
+        user_profile_results = sp.current_user() 
+        user_id = str(user_profile_results['id'])
+        # if album list is built, prevents rebuilding on refresh for user; however,
+        # list will rebuild for new / different users
+        if session.get(user_id + '_albums_done'):
+            pass
+        else:   
+            # use token to query spotify api for data 
+            album_info_dict = get_api_data(token)
+            # fill db and model with data
+            fill_db.fill_db(album_info_dict)
+            session['user_id'] = album_info_dict['user_id']
+            # alerts the session album list is built
+            session[user_id + '_albums_done'] = True
 
     user_id = session['user_id']
     # query SQL db for albums to fill album cards and playlists for add to playlist button

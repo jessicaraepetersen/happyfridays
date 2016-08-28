@@ -5,23 +5,16 @@ import spotipy.util as util
 from math import ceil
 import unidecode
 
-
-# scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
-
-# # if len(sys.argv) > 1:
-# #     username = sys.argv[1]
-# # else:
-# #     print "Usage: %s username" % (sys.argv[0],)
-# #     sys.exit()
-
-# # token = util.prompt_for_user_token(username, scope)
-
-# token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
+complete_new_release_album_ids = [] 
+fixed_20_new_release_album_ids = []
+new_release_artist_ids = []
 
 
 def get_api_data(token):
 ################################################################################
-#Gets the first 20 album ids from the Spotify new release list
+# Gets the first 20 album ids from the Spotify new release list in order to get 
+# the artist ids
+
     if token:
         print "The token exists!"
         sp = spotipy.Spotify(auth=token)
@@ -37,11 +30,12 @@ def get_api_data(token):
             complete_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
             fixed_20_new_release_album_ids.append(str(new_release_results['albums']['items'][i]['id']))
     else:
-        print "Can't get token for", username
+        print "NO TOKEN"
 
 
     ################################################################################
-    #Takes the album ids from above and gets the corresponding 20 artist ids
+    # Takes the album ids from above and gets the corresponding 20 artist ids from 
+    # Spotify API
 
     if token:
         print "The token exists!"
@@ -53,7 +47,7 @@ def get_api_data(token):
             new_release_artist_ids.append(str(album_results['albums'][i]['artists'][0]['id']))
 
     else:
-        print "Can't get token for", username
+        print "NO TOKEN"
 
 
     ################################################################################
@@ -79,7 +73,7 @@ def get_api_data(token):
                     new_release_artist_ids.append(str(album_results['albums'][i]['artists'][0]['id']))
                 
     else:
-        print "Can't get token for", username
+        print "NO TOKEN"
 
 
     ################################################################################
@@ -99,12 +93,10 @@ def get_api_data(token):
             user_followed_artists_ids.append(str(first_artist_followed_results['artists']['items'][i]['id']))
 
     else:
-        print "Can't get token for", username
-
+        print "NO TOKEN"
 
     ################################################################################
     #Gets the rest of the artist ids that the user follows
-
 
     for i in range(num_to_loop):
         if token:
@@ -116,11 +108,13 @@ def get_api_data(token):
             for i in range(len(artists_user_follows_results['artists']['items'])):
                 user_followed_artists_ids.append(str(artists_user_follows_results['artists']['items'][i]['id']))
 
-
+        else:
+            print "NO TOKEN"
 
     ################################################################################
-    #compares New Release artist id to User follows artists ids and deletes the
-    #tuples (of album ids, artist ids) that do not share artist ids with the user
+    # compares New Release artist id to User followed artist ids and deletes the
+    # tuples (of album ids, artist ids) that do not share artist ids with the user,
+    # resulting in a final album list of tuples (album_ids, artist_ids).
 
     tuple_album_id_artist_id_list = zip(complete_new_release_album_ids, new_release_artist_ids)
     final_album_list = []
@@ -149,6 +143,7 @@ def get_api_data(token):
             results = unidecode.unidecode(results)
         return results
 
+
     def move_the(results):
         '''Removes "The " from beginning of string and appends to the end with comma.'''
 
@@ -166,8 +161,7 @@ def get_api_data(token):
 
     ################################################################################
     # Takes the final_album_list produced from the above step and loops through the list
-    # 20 at a time to retrieve the album info for each item, then prints album name
-    # and artist name
+    # 20 at a time to retrieve the album info for each item.
 
     if token:
         print "The token exists!"
@@ -202,7 +196,7 @@ def get_api_data(token):
                 album_track_uris.append(list_of_current_album_track_uris)
 
     else:
-        print "Can't get token for", username
+        print "NO TOKEN"
 
 
     ################################################################################
@@ -212,7 +206,8 @@ def get_api_data(token):
         sp = spotipy.Spotify(auth=token)
         user_profile_results = sp.current_user() 
         user_id = str(user_profile_results['id'])
-
+    else:
+        print "NO TOKEN"
 
     ################################################################################
     # gets first round of user's playlist ids & names
@@ -247,11 +242,15 @@ def get_api_data(token):
                     user_playlist_ids.append(str(user_playlists_results['items'][i]['id']))
                     user_playlist_names.append(str(user_playlists_results['items'][i]['name']))
 
-
+    else:
+        print "NO TOKEN"
 
     ###########################################################################
-    # Creates a dictionary of all the API data needed to seed the database
+    # Creates a dictionary of all the API data needed to seed the database.
+    # Final album list is a final list of tuples (album_ids, artist_ids) that 
+    # represent a new album release by an artists that the user follows.
 
+    # gets only the album_ids
     unzipped = zip(*final_album_list)
     album_ids = list(unzipped[0])
 
@@ -272,7 +271,13 @@ def get_api_data(token):
 
     def remove_duplicates(values):
         """This function removes duplicates from a list, using set, without 
-        changing the order of the items in the original list."""
+        changing the order of the items in the original list.
+
+
+        Because Artist will be its own table in SQL / model, there should not be 
+        duplicate artists; though, there theoretically would be if the same 
+        artist released multiple albums or singles."""
+
         output = []
         seen = set()
         for value in values:
