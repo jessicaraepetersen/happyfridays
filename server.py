@@ -8,7 +8,7 @@ from model import connect_to_db, db, User, Artist, Album, UserAlbum, Playlist, T
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy.util as util
 import spotipy 
-from api_data import get_api_data
+from api import get_api_data
 
 
 # prevents a non-essential warning
