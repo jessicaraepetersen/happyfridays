@@ -39,13 +39,9 @@ class Artist(db.Model):
     artist_name = db.Column(db.String(100), nullable=False)
     artist_sorted_name = db.Column(db.String(100), nullable=False)
     link_to_artist = db.Column(db.String(60), nullable=False)
-    user_id = db.Column(db.String(60), db.ForeignKey('users.user_id'))
     
     # # Define relationship to Album
     albums = db.relationship('Album')
-    # # Define relationship to User
-    users = db.relationship('User')
-
 
 
     def __repr__(self):
@@ -66,14 +62,14 @@ class Album(db.Model):
     link_to_album = db.Column(db.String(60), nullable=False)
     album_art = db.Column(db.String(70), nullable=False)
     artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
-    user_id = db.Column(db.String(60), db.ForeignKey('users.user_id'))
 
     # # Define relationship to Artist
     artists = db.relationship('Artist')
     # # Define relationship to Track
-    tracks = db.relationship( 'Track')
-    # # Define relationship to User
-    users = db.relationship('User')
+    tracks = db.relationship('Track')    
+    # # Define relationship to UserAlbum
+    users_albums = db.relationship('UserAlbum')
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -81,6 +77,28 @@ class Album(db.Model):
         return "<Album album_id=%s album_name=%s>" % (self.album_id, 
                                                       self.album_name)
 
+class UserAlbum(db.Model):
+    __tablename__ = 'users_albums'
+
+    user_album_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.String(60),
+                        db.ForeignKey('users.user_id'),
+                        nullable=False)
+    album_id = db.Column(db.String(50),
+                         db.ForeignKey('albums.album_id'),
+                         nullable=False)
+
+    # # Define relationship to User
+    users = db.relationship('User')
+    # # Define relationship to Album
+    albums = db.relationship('Album')
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+
+        return "<UserAlbum user_album_id=%s user_id=%s album_id=%s>" % (self.user_album_id, 
+                                                                        self.user_id,
+                                                                        self.album_id)
 
 
 class Playlist(db.Model):
@@ -111,13 +129,10 @@ class Track(db.Model):
     #Each Spotify album track URI is 36 characters in length, including the quotes
     album_track_uri = db.Column(db.String(40), primary_key=True)
     album_id = db.Column(db.String(50), db.ForeignKey('albums.album_id'))
-    user_id = db.Column(db.String(60), db.ForeignKey('users.user_id'))
-
 
     # # Define relationship to Album
-    albums = db.relationship( 'Album')
-    # # Define relationship to User
-    users = db.relationship('User')
+    albums = db.relationship('Album')
+
 
     def __repr__(self):
         """Provide helpful representation when printed."""

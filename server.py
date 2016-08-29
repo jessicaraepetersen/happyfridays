@@ -4,7 +4,7 @@ import requests
 import fill_db
 from flask import Flask, render_template, render_template_string, request, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, User, Artist, Album, Playlist, Track
+from model import connect_to_db, db, User, Artist, Album, UserAlbum, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy.util as util
 import spotipy 
@@ -72,7 +72,7 @@ def list():
         user_profile_results = sp.current_user() 
         user_id = str(user_profile_results['id'])
         # if album list is built, prevents rebuilding on refresh for user; however,
-        # list will rebuild for new / different users
+        # list will rebuild for new / different users even if built for others
         if session.get(user_id + '_albums_done'):
             pass
         else:   
@@ -86,7 +86,7 @@ def list():
 
     user_id = session['user_id']
     # query SQL db for albums to fill album cards and playlists for add to playlist button
-    albums = db.session.query(Album).join(Album.artists).join(Album.users).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
+    albums = db.session.query(Album).join(Album.artists).join(Album.users_albums).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
     playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
 
     return render_template("list.html", albums=albums, playlists=playlists)  
@@ -102,6 +102,7 @@ def clear():
 
     db.session.query(Track).delete()
     db.session.query(Playlist).delete()
+    db.session.query(UserAlbum).delete()
     db.session.query(Album).delete() 
     db.session.query(Artist).delete() 
     db.session.query(User).delete() 
