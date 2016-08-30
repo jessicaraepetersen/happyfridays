@@ -6,10 +6,10 @@ from model import User, Album, Artist, UserAlbum, Playlist, Track, connect_to_db
 
 
 
-def load_users(album_info_dict):
-    """Load Spotify Users from album_info_dict into database."""
+def load_users(spotify_api_dict):
+    """Load Spotify Users from spotify_api_dict into database."""
 
-    user_id = album_info_dict['user_id']
+    user_id = spotify_api_dict['user_id']
     if db.session.query(User).filter_by(user_id=user_id).scalar() is not None:
         pass
     else:
@@ -22,17 +22,17 @@ def load_users(album_info_dict):
 
 
 
-def load_artists(album_info_dict):
-    """Load artists from album_info_dict into database."""
+def load_artists(spotify_api_dict):
+    """Load artists from spotify_api_dict into database."""
 
-    for i in range(len(album_info_dict['artist_ids_no_duplicates'])):
-        artist_id = album_info_dict['artist_ids_no_duplicates'][i]
+    for i in range(len(spotify_api_dict['album_info'])):
+        artist_id = spotify_api_dict['album_info'][i]['artist_id']
         if db.session.query(Artist).filter_by(artist_id=artist_id).scalar() is not None:
             pass
         else:
-            artist_name = album_info_dict['artist_names'][i]
-            artist_sorted_name = album_info_dict['artist_sorted_names'][i]
-            link_to_artist = album_info_dict['artist_links'][i]
+            artist_name = spotify_api_dict['album_info'][i]['artist_name']
+            artist_sorted_name = spotify_api_dict['album_info'][i]['artist_sorted_name']
+            link_to_artist = spotify_api_dict['album_info'][i]['link_to_artist']
 
 
             artist = Artist(artist_id=artist_id,
@@ -47,18 +47,18 @@ def load_artists(album_info_dict):
     db.session.commit()
 
 
-def load_albums(album_info_dict):
-    """Load albums from album_info_dict into database."""
+def load_albums(spotify_api_dict):
+    """Load albums from spotify_api_dict into database."""
 
-    for i in range(len(album_info_dict['album_ids'])):
-        if db.session.query(Album).filter_by(album_id=album_info_dict['album_ids'][i]).scalar() is not None:
+    for i in range(len(spotify_api_dict['album_info'])):
+        album_id = spotify_api_dict['album_info'][i]['album_id']
+        if db.session.query(Album).filter_by(album_id=album_id).scalar() is not None:
             pass
         else:
-            album_id = album_info_dict['album_ids'][i]
-            album_name = album_info_dict['album_names'][i]
-            link_to_album = album_info_dict['album_links'][i]
-            album_art = album_info_dict['album_art'][i]
-            artist_id = album_info_dict['artist_ids'][i]
+            album_name = spotify_api_dict['album_info'][i]['album_name']
+            link_to_album = spotify_api_dict['album_info'][i]['link_to_album']
+            album_art = spotify_api_dict['album_info'][i]['album_art_300']
+            artist_id = spotify_api_dict['album_info'][i]['artist_id']
 
             album = Album(album_id=album_id,
                         album_name=album_name,
@@ -73,13 +73,13 @@ def load_albums(album_info_dict):
     db.session.commit()
 
 
-def load_users_albums(album_info_dict):
-    """Load users_albums from album_info_dict into database."""
+def load_users_albums(spotify_api_dict):
+    """Load users_albums from spotify_api_dict into database."""
 
     # user_album_id = FIX ME FIX ME FIX ME FIX ME FIX ME FIX ME
-    user_id = album_info_dict['user_id']
-    for i in range(len(album_info_dict['album_ids'])):
-        album_id = album_info_dict['album_ids'][i]
+    user_id = spotify_api_dict['user_id']
+    for i in range(len(spotify_api_dict['album_info'])):
+        album_id = spotify_api_dict['album_info'][i]['album_id']
 
         user_album = UserAlbum(user_id=user_id, album_id=album_id)
 
@@ -91,16 +91,16 @@ def load_users_albums(album_info_dict):
 
 
 
-def load_playlists(album_info_dict):
-    """Load playlists from u.data into database."""
+def load_playlists(spotify_api_dict):
+    """Load playlists from spotify_api_dict into database."""
 
-    user_id = album_info_dict['user_id']
-    for i in range(len(album_info_dict['user_playlist_ids'])):
-        playlist_id = album_info_dict['user_playlist_ids'][i]
+    user_id = spotify_api_dict['user_id']
+    for i in range(len(spotify_api_dict['playlist_info'])):
+        playlist_id = spotify_api_dict['playlist_info'][i]['user_playlist_id']
         if db.session.query(Playlist).filter_by(playlist_id=playlist_id).scalar() is not None:
             pass
         else:
-            playlist_name = album_info_dict['user_playlist_names'][i]
+            playlist_name = spotify_api_dict['playlist_info'][i]['user_playlist_name']
 
             playlist = Playlist(playlist_id=playlist_id,
                             playlist_name=playlist_name,
@@ -109,28 +109,20 @@ def load_playlists(album_info_dict):
             # We need to add to the session or it won't ever be stored
             db.session.add(playlist)
 
-            # An optimization: if we commit after every add, the database
-            # will do a lot of work committing each record. However, if we
-            # wait until the end, on computers with smaller amounts of
-            # memory, it might thrash around. By committing every 1,000th
-            # add, we'll strike a good balance.
-
     # Once we're done, we should commit our work
     db.session.commit()
 
 
-def load_tracks(album_info_dict):
-    """Load album track uris from album_info_dict into database."""
+def load_tracks(spotify_api_dict):
+    """Load album track uris from spotify_api_dict into database."""
 
-    tuples_of_ids_uris = zip(album_info_dict['album_ids'], album_info_dict['album_track_uris'])
-    for pair in tuples_of_ids_uris:
-        album_id = pair[0]
-        for i in range(len(pair[1])):
-            if db.session.query(Track).filter_by(album_track_uri=pair[1][i]).scalar() is not None:
+    for i in range(len(spotify_api_dict['album_info'])):
+        album_id = spotify_api_dict['album_info'][i]['album_id']
+        for n in range(len(spotify_api_dict['album_info'][i]['album_tracks_uris'])):
+            album_track_uri = spotify_api_dict['album_info'][i]['album_tracks_uris'][n]
+            if db.session.query(Track).filter_by(album_track_uri=album_track_uri).scalar() is not None:
                 pass
             else:
-                album_track_uri = pair[1][i]
-
                 track = Track(album_track_uri=album_track_uri,
                                     album_id=album_id)
                 # We need to add to the session or it won't ever be stored
@@ -141,13 +133,13 @@ def load_tracks(album_info_dict):
 
 
 
-def fill_db(album_info_dict):
-    load_users(album_info_dict)
-    load_artists(album_info_dict)
-    load_albums(album_info_dict)
-    load_users_albums(album_info_dict)
-    load_playlists(album_info_dict)
-    load_tracks(album_info_dict)
+def fill_db(spotify_api_dict):
+    load_users(spotify_api_dict)
+    load_artists(spotify_api_dict)
+    load_albums(spotify_api_dict)
+    load_users_albums(spotify_api_dict)
+    load_playlists(spotify_api_dict)
+    load_tracks(spotify_api_dict)
     
 
 

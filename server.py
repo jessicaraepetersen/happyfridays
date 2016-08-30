@@ -77,10 +77,10 @@ def list():
             pass
         else:   
             # use token to query spotify api for data 
-            album_info_dict = get_api_data(token)
-            # fill db and model with data
-            fill_db.fill_db(album_info_dict)
-            session['user_id'] = album_info_dict['user_id']
+            spotify_api_dict = get_api_data(token)
+            # fill db and model with dbata
+            fill.fill_db(spotify_api_dict)
+            session['user_id'] = spotify_api_dict['user_id']
             # alerts the session album list is built
             session[user_id + '_albums_done'] = True
 
@@ -148,11 +148,14 @@ if __name__ == "__main__":
     # that I invoke the DebugToolbarExtension
     app.debug = True
 
-    # connect_to_db(app)
+    connect_to_db(app)
 
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
 
+    # app.run(host="0.0.0.0", port=5000)
+
+    
     PORT = int(os.environ.get("PORT", 5000))
 
     app.run(host="0.0.0.0", port=PORT)

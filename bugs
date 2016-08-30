@@ -1,5 +1,5 @@
 BUGS:
-
+-figure out how to display home page only once it's fully been loaded
 -figure out logout /clear situation (set up and tear down) - time out? every 24 hours?
 -incorporate testing
 -order by release date
