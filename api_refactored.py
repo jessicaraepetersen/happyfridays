@@ -349,17 +349,6 @@ artist_info_dict = {
     'artist_links': artist_links
 }
 
-################################################################################
-# if token:
-#     print "The token exists!"
-#     sp = spotipy.Spotify(auth=token)
-#     user_playlist_add_tracks(user_id, playlist_id, track_ids)
-
-################################################################################
-
-
-
-
 
 
 

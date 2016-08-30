@@ -148,7 +148,7 @@ if __name__ == "__main__":
     # that I invoke the DebugToolbarExtension
     app.debug = True
 
-    connect_to_db(app)
+    # connect_to_db(app)
 
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
