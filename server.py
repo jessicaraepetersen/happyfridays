@@ -1,7 +1,7 @@
 # from jinja2 import StrictUndefined
 import os # To access my OS environment variables, specifically spotify client id
 import requests
-import fill_db
+import fill
 from flask import Flask, render_template, render_template_string, request, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Artist, Album, UserAlbum, Playlist, Track
