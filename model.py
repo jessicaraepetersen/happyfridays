@@ -164,8 +164,11 @@ def connect_to_db(app):
     # username = 
     # password =                                                                                                 # db name
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wdtqwlrhwsvqlv:5jLRu_8qIaISizWBtwYrgSJTyZ@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d6mmoa5tqfeefm'
-    
+
     # app.config['SQLALCHEMY_DATABASE_URI'] = protocol + username +':' + password + 
+
+    #Configure database locally using this:
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
