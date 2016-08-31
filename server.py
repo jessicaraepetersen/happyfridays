@@ -33,12 +33,16 @@ scope = 'user-follow-read user-read-private playlist-read-private playlist-read-
 api = SpotifyOAuth(client_id, client_secret, redirect_uri, scope=scope)
 client_credentials_manager = SpotifyClientCredentials()
 
+print os.environ
+
 
 @app.route('/') 
 def index():
     """Homepage where user clicks to auth their Spotify account."""
     # uses Spotipy method to construct the auth url
     url1 = api.get_authorize_url()
+    print ''
+    print url
     url = url1+'&show_dialog=true'
 
     return render_template("index.html", url=url)
