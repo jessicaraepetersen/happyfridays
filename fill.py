@@ -32,7 +32,7 @@ def load_artists(spotify_api_dict):
         else:
             artist_name = spotify_api_dict['album_info'][i]['artist_name']
             artist_sorted_name = spotify_api_dict['album_info'][i]['artist_sorted_name']
-            link_to_artist = spotify_api_dict['album_info'][i]['link_to_artist']
+            link_to_artist = spotify_api_dict['album_info'][i]['artist_link']
 
 
             artist = Artist(artist_id=artist_id,
