@@ -56,7 +56,7 @@ def load_albums(spotify_api_dict):
             pass
         else:
             album_name = spotify_api_dict['album_info'][i]['album_name']
-            link_to_album = spotify_api_dict['album_info'][i]['link_to_album']
+            link_to_album = spotify_api_dict['album_info'][i]['album_link']
             album_art = spotify_api_dict['album_info'][i]['album_art_300']
             artist_id = spotify_api_dict['album_info'][i]['artist_id']
 
