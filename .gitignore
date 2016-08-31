@@ -1,0 +1,5 @@
+env
+spotify_secret.sh
+*.cache-*
+*.pyc
+bugs

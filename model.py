@@ -159,8 +159,13 @@ def empty_tables(table_name, userid):
 def connect_to_db(app):
     """Connect the database to Flask app."""
 
-    # Configure to use our PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
+    # Configure to use our PostgreSQL database   
+    # protocol = 'postgres'
+    # username = 
+    # password =                                                                                                 # db name
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wdtqwlrhwsvqlv:5jLRu_8qIaISizWBtwYrgSJTyZ@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d6mmoa5tqfeefm'
+    
+    # app.config['SQLALCHEMY_DATABASE_URI'] = protocol + username +':' + password + 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
