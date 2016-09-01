@@ -15,5 +15,6 @@ oauthlib==1.1.2
 psycopg2==2.6.2
 requests==2.11.0
 requests-oauthlib==0.6.2
+schedule==0.3.2
 spotipy==2.3.8
 wsgiref==0.1.2

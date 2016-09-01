@@ -20,9 +20,8 @@ final_album_list = []
 user_playlist_list_of_dict = []
 
 def get_api_data(token):
+
 ################################################################################
-# Gets the first 20 album ids from the Spotify new release list in order to get 
-# the artist ids
 
     def get_num_results_and_offsets(token):
         """Returns total number of Spotify new release albums and times to offset."""
@@ -111,21 +110,21 @@ def get_api_data(token):
     ############################################################################
     #Helper Functions
 
-    def special_char(results):
-        '''Turns special characters in unicode into normal character string.'''
+    # def special_char(results):
+    #     '''Turns special characters in unicode into normal character string.'''
 
-        '''This function checks to see if the unicode from the Spotify API can be
-        turned into a string. If the error UnicodeEncodeError occurs, the function
-        turns the special characters in the unicode into a string of normal 
-        characters. This function is used in the code block below when querying the 
-        Spotify API for the album names and the artist names, which will be displayed 
-        to the user.'''
+    #     '''This function checks to see if the unicode from the Spotify API can be
+    #     turned into a string. If the error UnicodeEncodeError occurs, the function
+    #     turns the special characters in the unicode into a string of normal 
+    #     characters. This function is used in the code block below when querying the 
+    #     Spotify API for the album names and the artist names, which will be displayed 
+    #     to the user.'''
 
-        try:
-            str(results)
-        except UnicodeEncodeError:
-            results = unidecode.unidecode(results)
-        return results
+    #     try:
+    #         str(results)
+    #     except UnicodeEncodeError:
+    #         results = unidecode.unidecode(results)
+    #     return results
 
 
     def move_the(results):
@@ -154,23 +153,29 @@ def get_api_data(token):
 
         unzipped = zip(*final_album_list)
         album_ids = list(unzipped[0])
-        artist_ids = list(unzipped[1])
+        # artist_ids = list(unzipped[1])
         #calculates the number of times to loop through the list
         loop_thru = int(ceil(float(len(album_ids)) / 20.0)) 
         album_info_list_of_dict = []
 
         for i in range(loop_thru):
-            album_info_results = sp.albums(album_ids[0:20])
-            del album_ids[:20]
+            album_info_results = sp.albums(album_ids[-20:])
+            del album_ids[-20:]
             for i in range(len(album_info_results['albums'])):
                 current = {}
                 current['album_id'] = album_info_results['albums'][i]['id']
-                current['album_name'] = special_char(album_info_results['albums'][i]['name'])
+                # used the code below for when special characters were breaking the code
+                # current['album_name'] = special_char(album_info_results['albums'][i]['name'])
+                current['album_name'] = album_info_results['albums'][i]['name']
                 current['album_link'] = str(album_info_results['albums'][i]['external_urls']['spotify'])
                 current['album_art_300'] = str(album_info_results['albums'][i]['images'][1]['url'])
                 current['artist_id'] = album_info_results['albums'][i]['artists'][0]['id']
-                current['artist_name'] = special_char(album_info_results['albums'][i]['artists'][0]['name'])
-                current['artist_sorted_name'] = move_the(special_char(album_info_results['albums'][i]['artists'][0]['name']))
+                # used the code below for when special characters were breaking the code
+                # current['artist_name'] = special_char(album_info_results['albums'][i]['artists'][0]['name'])
+                current['artist_name'] = album_info_results['albums'][i]['artists'][0]['name']
+                # used the code below for when special characters were breaking the code
+                # current['artist_sorted_name'] = move_the(special_char(album_info_results['albums'][i]['artists'][0]['name']))
+                current['artist_sorted_name'] = move_the(album_info_results['albums'][i]['artists'][0]['name'])
                 current['artist_link'] = str(album_info_results['albums'][i]['artists'][0]['external_urls']['spotify'])
                 #gets a list of album track URIs
                 num_of_tracks = len(album_info_results['albums'][i]['tracks']['items'])

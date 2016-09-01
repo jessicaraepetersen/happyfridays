@@ -8,7 +8,7 @@ from model import connect_to_db, db, User, Artist, Album, UserAlbum, Playlist, T
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy.util as util
 import spotipy 
-from api import get_api_data
+from api_copy import ApiData
 
 
 # prevents a non-essential warning
@@ -76,8 +76,12 @@ def list():
         if session.get(user_id + '_albums_done'):
             pass
         else:   
+            #create an instance of the ApiData class in api module passing in token
+            spotify_api_data = ApiData(token)
+            #use the get_Spotify_data method to get dictionary
+            spotify_api_dict = spotify_api_data.get_Spotify_data()
             # use token to query spotify api for data 
-            spotify_api_dict = get_api_data(token)
+            # spotify_api_dict = get_api_data(token)
             # fill db and model with dbata
             fill.fill_db(spotify_api_dict)
             session['user_id'] = spotify_api_dict['user_id']
