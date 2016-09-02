@@ -58,12 +58,14 @@ def load_albums(spotify_api_dict):
             album_name = spotify_api_dict['album_info'][i]['album_name']
             link_to_album = spotify_api_dict['album_info'][i]['album_link']
             album_art = spotify_api_dict['album_info'][i]['album_art_300']
+            album_release_date = spotify_api_dict['album_info'][i]['album_release_date']
             artist_id = spotify_api_dict['album_info'][i]['artist_id']
 
             album = Album(album_id=album_id,
                         album_name=album_name,
                         link_to_album=link_to_album,
                         album_art=album_art,
+                        album_release_date=album_release_date,
                         artist_id=artist_id)
 
             # We need to add to the session or it won't ever be stored

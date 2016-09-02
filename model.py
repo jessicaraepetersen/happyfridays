@@ -61,6 +61,7 @@ class Album(db.Model):
     album_name = db.Column(db.String(100), nullable=False)
     link_to_album = db.Column(db.String(60), nullable=False)
     album_art = db.Column(db.String(70), nullable=False)
+    album_release_date = db.Column(db.String(15), nullable=False)
     artist_id = db.Column(db.String(50), db.ForeignKey('artists.artist_id'))
 
     # # Define relationship to Artist
@@ -145,27 +146,12 @@ class Track(db.Model):
 # Helper functions
 
 
-def empty_tables(table_name, userid):
-    """Clear content of a given user's database."""
-
-    try:
-        db.session.query(table_name).filter(table_name.user_id==userid).delete()
-        db.session.commit()
-    except:
-        db.session.rollback()
-
-
-
 def connect_to_db(app):
     """Connect the database to Flask app."""
 
-    # Configure to use our PostgreSQL database   
-    # protocol = 'postgres'
-    # username = 
-    # password =                                                                                                 # db name
+    # Configure to use our PostgreSQL database                                                                                                      # db name
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wdtqwlrhwsvqlv:5jLRu_8qIaISizWBtwYrgSJTyZ@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d6mmoa5tqfeefm'
 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = protocol + username +':' + password + 
 
     #Configure database locally using this:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
@@ -179,7 +165,7 @@ if __name__ == "__main__":
     # you in a state of being able to work with the database directly.
 
 
-    from server import app
+    from server_copy import app
     connect_to_db(app)
     print "Connected to DB."
 
