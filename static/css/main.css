@@ -88,6 +88,26 @@ a {
     transition: all 160ms ease-in;
 }
 
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    #home-body {
+        background-position: 155% 0;
+        background-size: 1066px 600px;
+
+    }
+
+    .home-logo {
+        height: 32px;
+        width: 162px;
+        margin: 30px 0 30px;
+    }
+}
+
 /*-------------------------HappyFridays Loading Page--------------------------*/
 
 
@@ -255,7 +275,7 @@ a {
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: normal;
-    margin: 0 118px 0 0;
+    margin: 0 115px 0 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     height: 14px;
@@ -271,14 +291,15 @@ a {
     text-transform: uppercase;
     margin: 0;
     display: inline-block;
-    height: 14px;
-    width: 160px;
+    height: 18px;
+    width: 165px;
 }
 
 .sort-color {
     color: #4A8BF8;
     height: 14px;
     cursor: pointer;
+    margin-left: 3px;
 }
 
 .caret {
@@ -290,11 +311,13 @@ a {
     margin: 4px 0 0 7px;
     display: inline-block;
     cursor: pointer;
+    vertical-align: top;
 }
 
 .sort-dropdown {
     display: inline-block;
     cursor: pointer;
+    width: 120px;
 }
 
 .dropdown-style {
