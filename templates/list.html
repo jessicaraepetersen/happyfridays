@@ -29,8 +29,20 @@
             </a>
         </div>
         <h1 class='new-for-you-h1'>New & For You</h1>
-        <p class='new-releases-h2'>New Releases From The Artists You Follow on Spotify</p>
-        <div class='album-cards-div'>
+        <div class='release-and-sort-h2'>
+            <div class='new-releases'>New Releases From The Artists You Follow</div>
+            <div class='sort-by'><span>Sort By: <span>
+                <div class='dropdown dropdown-style'>
+                    <div class='sort-dropdown dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><span class='sort-color'>Artist Name</span><div class='caret'></div></div>
+                    <ul class='dropdown-menu dropdown-style-menu' aria-labelledby='dropdownMenu1'>                
+                        <li><a id='sort-by-artist-name' class='sort-options' href='#'>Artist Name</a></li>
+                        <li><a id='sort-by-album-name' class='sort-options' href='#'>Album Name</a></li>
+                        <li><a id='sort-by-release-date' class='sort-options' href='#'>Release Date</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class='album-cards-div' id='artist-name-sort'>
         {% for album in albums %}
             <div class='album-card' id='card{{ album.album_id }}'>
                 <div class='album-art-div'>
@@ -42,14 +54,76 @@
                 </div>
                 <div class='group-of-buttons'>
                     <div class='dropdown'>
-                        <div class='play-btn dropdown-toggle' id='dropdownMenu1' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
-                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+                        <div class='play-btn dropdown-toggle' id='dropdownMenu2' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
                             <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
                         </ul>
                     </div>
                     <div class='dropdown playlist-dropdown'>
-                        <div class='plus-btn dropdown-toggle' id='dropdownMenu2' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
-                        <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu2'>
+                        <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
+                            <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
+                        {% for playlist in playlists %}                          
+                            <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class='x-btn' data-album-id= '{{ album.album_id }}' alt='Remove Album Icon'></div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class='album-cards-div hidden' id='album-name-sort'>
+        {% for album in albums|sort(attribute='album_name') %}
+            <div class='album-card' id='card{{ album.album_id }}'>
+                <div class='album-art-div'>
+                    <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
+                </div>
+                <div class='album-info'>
+                    <h2 class='artist-name truncate'><a href={{ album.artists.link_to_artist }} target='_blank;'>{{ album.artists.artist_name }}</a></h2>
+                    <h3 class='album-name truncate'><a href={{ album.link_to_album }} target='_blank;'>{{ album.album_name }}</a></h3>
+                </div>
+                <div class='group-of-buttons'>
+                    <div class='dropdown'>
+                        <div class='play-btn dropdown-toggle' id='dropdownMenu2' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                            <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
+                        </ul>
+                    </div>
+                    <div class='dropdown playlist-dropdown'>
+                        <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
+                            <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
+                        {% for playlist in playlists %}                          
+                            <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class='x-btn' data-album-id= '{{ album.album_id }}' alt='Remove Album Icon'></div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class='album-cards-div hidden' id='release-date-sort'>
+        {% for album in albums|sort(reverse=True, attribute='album_release_date') %}
+            <div class='album-card' id='card{{ album.album_id }}'>
+                <div class='album-art-div'>
+                    <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
+                </div>
+                <div class='album-info'>
+                    <h2 class='artist-name truncate'><a href={{ album.artists.link_to_artist }} target='_blank;'>{{ album.artists.artist_name }}</a></h2>
+                    <h3 class='album-name truncate'><a href={{ album.link_to_album }} target='_blank;'>{{ album.album_name }}</a></h3>
+                </div>
+                <div class='group-of-buttons'>
+                    <div class='dropdown'>
+                        <div class='play-btn dropdown-toggle' id='dropdownMenu2' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+                            <iframe src='https://embed.spotify.com/?uri=spotify:album:{{ album.link_to_album[-22:] }}&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>
+                        </ul>
+                    </div>
+                    <div class='dropdown playlist-dropdown'>
+                        <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
+                        <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
                             <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
                         {% for playlist in playlists %}                          
                             <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>

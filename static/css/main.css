@@ -37,7 +37,7 @@ a {
 
 .content-div {
     margin-left: 80px;
-    width: 650px;
+    width: 660px;
 }
 
 .home-h1 {
@@ -58,7 +58,7 @@ a {
     line-height: 28px;
     margin-top: 0px;
     margin-bottom: 48px;
-    width: 529px;
+    width: 540px;
 }
 
 .spotify-btn a {
@@ -226,7 +226,7 @@ a {
 }
 
 .happy-fridays-icon {
-    margin: 33px auto 0;
+    margin: 33px auto 25px;
     height: 40px;
     width: 40px;
 }
@@ -237,31 +237,92 @@ a {
     font-size: 2.25rem; /* I want 36px / default browser: 16px = gives me 2.25rem */
     text-align: center;
     font-weight: normal;
-    margin-bottom: 0;
+    margin-bottom: 44px;
+    margin-top: 0;
     letter-spacing: -0.03em;
 }
 
-.new-releases-h2 {
+.release-and-sort-h2 {
+    height: 26px;
+    width: 600px;
+    margin: 0 auto 15px;
+    border-bottom: 1px solid rgba(40,46,54,0.12);
+}
+
+
+.new-releases {
     color: #636E7C;
     text-decoration: none;
-    font-size: .875rem; /* I want 14px / default browser: 16px = gives me .875rem */
-    text-align: center;
+    font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: normal;
-    margin-top: 6px;
-    margin-bottom: 0;
+    margin: 0 118px 0 0;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
+    height: 14px;
+    width: 315px;
+    display: inline-block;
 }   
 
+.sort-by {
+    font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
+    font-weight: normal;
+    color: #636E7C;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    display: inline-block;
+    height: 14px;
+    width: 160px;
+}
+
+.sort-color {
+    color: #4A8BF8;
+    height: 14px;
+    cursor: pointer;
+}
+
+.caret {
+    background-image: url('../img/icons/caret.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 5px;  
+    width: 10px;   
+    margin: 4px 0 0 7px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.sort-dropdown {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-style {
+    width: 100px;
+    display: inline-block;
+}
+
+.sort-options {
+    color: #4A8BF8;
+    text-transform: none;
+    width: 90px;
+    margin-right: 0;
+}
+
 .album-cards-div {
-    margin: 19px auto 100px;
+    margin: 0 auto 100px;
     flex: 1;
 }
+
+.hidden {
+    display: none;
+}
+
 
 .album-card {
     height: 100px;
     width: 600px;
-    margin: 16px auto;
+    margin: 0 auto 16px;
     border-radius: 2px;
     background-color: #FFFFFF;
     display: block;

@@ -1,4 +1,30 @@
 // #############################################################################
+// Sort album list options
+
+$('#sort-by-artist-name').click(function(evt) {
+    $('#album-name-sort').addClass('hidden');
+    $('#release-date-sort').addClass('hidden');
+    $('#artist-name-sort').removeClass('hidden');
+    $('.sort-color').html("Artist Name");
+});
+
+
+$('#sort-by-album-name').click(function(evt) {
+    $('#artist-name-sort').addClass('hidden');
+    $('#release-date-sort').addClass('hidden');
+    $('#album-name-sort').removeClass('hidden');
+    $('.sort-color').html("Album Name");
+});
+
+$('#sort-by-release-date').click(function(evt) {
+    $('#album-name-sort').addClass('hidden');
+    $('#artist-name-sort').addClass('hidden');
+    $('#release-date-sort').removeClass('hidden');
+    $('.sort-color').html("Release Date");
+});
+
+
+// #############################################################################
 // Change play button to pause button or vice versa
 
 $('.play-btn').click(function(evt) {
