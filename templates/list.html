@@ -44,7 +44,7 @@
         </div>
         <div class='album-cards-div' id='artist-name-sort'>
         {% for album in albums %}
-            <div class='album-card' id='card{{ album.album_id }}'>
+            <div class='album-card card{{ album.album_id }}'>
                 <div class='album-art-div'>
                     <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
                 </div>
@@ -75,7 +75,7 @@
         </div>
         <div class='album-cards-div hidden' id='album-name-sort'>
         {% for album in albums|sort(attribute='album_name') %}
-            <div class='album-card' id='card{{ album.album_id }}'>
+            <div class='album-card card{{ album.album_id }}'>
                 <div class='album-art-div'>
                     <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
                 </div>
@@ -106,7 +106,7 @@
         </div>
         <div class='album-cards-div hidden' id='release-date-sort'>
         {% for album in albums|sort(reverse=True, attribute='album_release_date') %}
-            <div class='album-card' id='card{{ album.album_id }}'>
+            <div class='album-card card{{ album.album_id }}'>
                 <div class='album-art-div'>
                     <img class='album-art-img' src={{ album.album_art }} alt='Image of '{{ album.album_name }} ' Art'>
                 </div>

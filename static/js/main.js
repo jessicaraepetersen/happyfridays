@@ -38,7 +38,7 @@ $('.play-btn').click(function(evt) {
 
 $('.x-btn').click(function(evt) {
     var album_id = $(this).data('albumId');
-    $('#card' + album_id ).remove();
+    $('.card' + album_id ).remove();
 });
 
 
