@@ -161,11 +161,11 @@ def connect_to_db(app):
     port = '5432'
     database = 'd6mmoa5tqfeefm'
                                                                                                     
-    # app.config['SQLALCHEMY_DATABASE_URI'] = p + ':' + password + '@' + host + ':' + port+ '/' + database
+    app.config['SQLALCHEMY_DATABASE_URI'] = p + ':' + password + '@' + host + ':' + port+ '/' + database
 
 
     #Configure database locally using this:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
