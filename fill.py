@@ -136,6 +136,8 @@ def load_tracks(spotify_api_dict):
 
 
 def fill_db(spotify_api_dict):
+    """Call the functions to load the Spotify API data into the models / database."""
+
     load_users(spotify_api_dict)
     load_artists(spotify_api_dict)
     load_albums(spotify_api_dict)

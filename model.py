@@ -1,14 +1,15 @@
 """Models and database functions for HappyFridays project."""
 
+# Suppresses InsecureRequestWarning: Unverified HTTPS request is being made in Python2.6
 import requests.packages.urllib3
 requests.packages.urllib3.disable_warnings()
 
 
 from flask_sqlalchemy import SQLAlchemy
 
-# This is the connection to the PostgreSQL database; we're getting this through
-# the Flask-SQLAlchemy helper library. On this, we can find the `session`
-# object, where we do most of our interactions (like committing, etc.)
+# This is the connection to the PostgreSQL database; I'm getting this through
+# the Flask-SQLAlchemy helper library. On this, I can find the `session`
+# object, where I'll do some of my interactions (like committing, etc.)
 
 db = SQLAlchemy()
 
@@ -149,20 +150,30 @@ class Track(db.Model):
 def connect_to_db(app):
     """Connect the database to Flask app."""
 
-    # Configure to use our PostgreSQL database                                                                                                      # db name
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wdtqwlrhwsvqlv:5jLRu_8qIaISizWBtwYrgSJTyZ@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d6mmoa5tqfeefm'
+    # Configure to use my PostgreSQL database 
+
+    #Configure Heroku PostgreSQL deployed HappyFridays database using this url:
+
+    p = 'postgres://'
+    user = 'wdtqwlrhwsvqlv'
+    password = '5jLRu_8qIaISizWBtwYrgSJTyZ'
+    host = 'ec2-50-17-227-146.compute-1.amazonaws.com'
+    port = '5432'
+    database = 'd6mmoa5tqfeefm'
+                                                                                                    
+    # app.config['SQLALCHEMY_DATABASE_URI'] = p + ':' + password + '@' + host + ':' + port+ '/' + database
 
 
     #Configure database locally using this:
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///albums'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
 
 
 if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
+    # As a convenience, if I run this module interactively, it will leave
+    # me in a state of being able to work with the database directly.
 
 
     from server_copy import app

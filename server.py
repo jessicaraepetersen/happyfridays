@@ -101,8 +101,6 @@ def list():
 def clear():
     """Clears SQL tables once user is done ."""
 
-    # if session['userid'] != 'sklfjsdlk':
-    #     return redirect('/?failure')
 
     db.session.query(Track).delete()
     db.session.query(Playlist).delete()
@@ -136,10 +134,12 @@ def add_to_playlist():
     if token:
         sp = spotipy.Spotify(auth=token)
         sp.user_playlist_add_tracks(user_id, playlist_id, list_of_track_uris)
-
+    #The user selects a playlist to add an album to. This queries the name of the
+    # playlist to include in the flash-like message.
     playlist = Playlist.query.filter_by(playlist_id=playlist_id).one()
     playlist_name = str(playlist.playlist_name)
-
+    #The user selects a playlist to add an album to. This queries the name of the
+    # album to include in the flash-like message.
     album = Album.query.filter_by(album_id=album_id).one()
     album_name = str(album.album_name)
     # return playlist_name and album_name for flash-like message
@@ -159,7 +159,7 @@ if __name__ == "__main__":
 
     # app.run(host="0.0.0.0", port=5000)
 
-    
+    # This port works for deployed heroku site:    
     PORT = int(os.environ.get("PORT", 5000))
 
     app.run(host="0.0.0.0", port=PORT)
