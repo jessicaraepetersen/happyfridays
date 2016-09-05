@@ -1,55 +1,6 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>HappyFridays | Discover new releases from artists you follow</title>
-        <meta name="description" content="Every Friday, discover new releases from the artists you follow on Spotify.">
-        <link rel="canonical" href="https://happyfridays.co/">
-        <meta property="og:locale" content="en_US">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="HappyFridays | Discover new releases from artists you follow">
-        <meta property="og:description" content="Every Friday, discover new releases from the artists you follow on Spotify.">
-        <meta property="og:url" content="https://happyfridays.co/">
-        <meta property="og:site_name" content="HappyFridays">
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:description" content="Every Friday, discover new releases from the artists you follow on Spotify.">
-        <meta name="twitter:title" content="HappyFridays | Discover new releases from artists you follow">
-
-        <!-- Code for favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-        <link rel="apple-touch-icon" sizes="57x57" href="./static/img/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="./static/img/favicon/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="./static/img/favicon/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="./static/img/favicon/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="./static/img/favicon/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="./static/img/favicon/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="./static/img/favicon/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="./static/img/favicon/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="./static/img/favicon/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="./static/img/favicon/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./static/img/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="./static/img/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./static/img/favicon/favicon-16x16.png">
-        <link rel="manifest" href="./static/img/favicon/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
-        <!-- End of code for favicon -->
-
-        <link rel="stylesheet" href="./static/css/normalize.css">
-        <link rel='stylesheet' type='text/css' href='https://cloud.typography.com/6541534/6472552/css/fonts.css'>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
-        <link rel="stylesheet" href="./static/css/main.css">
-
-    </head>
+{% extends 'base.html' %}
+    {% block content %} 
     <body id='loading-body'>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
         <img class='happy-fridays-icon-loading' src='/static/img/logo/happy-fridays-icon.svg' alt='HappyFridays Icon'>
         <div class='entire-loading-message'>
             <h1 class='building-list-h1'>Building your list of new releases...</h1>
@@ -58,7 +9,7 @@
         </div>
 
         <footer>
-            <p class='footer-text'>BUILT WITH ❤ BY <a href='http://jessicaraepetersen.com/' target='_blank;'>Jessica Rae Petersen</a>. <span class='hide-mobile'>Enginer for <a href='mailto:jessicaraepetersen@gmail.com'>hire</a>.</span></p>
+            <p class='footer-text'>BUILT WITH ❤ BY <a href='http://jessicaraepetersen.com/' target='_blank;'>Jessica Rae Petersen</a>. <span class='hide-mobile'>Engineer for <a href='mailto:jessicaraepetersen@gmail.com'>hire</a>.</span></p>
         </footer>
 
 
@@ -69,15 +20,5 @@
                 window.location.replace('/list');
             });
         </script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-83601078-1', 'auto');
-            ga('send', 'pageview');
-        </script>
     </body>
-</html>
+    {% endblock %}

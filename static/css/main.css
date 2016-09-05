@@ -7,6 +7,7 @@ body {
     display: flex;  /*Used to make sticky footer with flexbox*/
     flex-direction: column;
     min-height: 100vh;
+    min-width: 320px;
 }
 
 
@@ -341,6 +342,12 @@ a {
     }
 }
 
+@media only screen and (max-width: 360px) {
+    .new-for-you-h1 {
+        margin-bottom: 9px;
+    }
+}
+
 .release-and-sort-h2 {
     height: 26px;
     max-width: 600px;
@@ -381,6 +388,13 @@ a {
     }
 }
 
+
+@media only screen and (max-width: 360px) {
+    .new-releases {
+        display: none;
+    }
+}
+
 .sort-by {
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: 600;
@@ -397,6 +411,20 @@ a {
     .sort-by {
         float: right;
         font-weight: 400;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .sort-by {
+        margin-right: 5px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .sort-by {
+        margin: 0 auto;
+        float: none;
+        display: block;
     }
 }
 
@@ -435,6 +463,12 @@ a {
     text-transform: none;
     width: 90px;
     margin-right: 0;
+}
+
+@media only screen and (max-width: 400px) {
+    .sort-options {
+        width: 80px;
+    }
 }
 
 .album-cards-padding {
@@ -534,7 +568,7 @@ and artist names when they are too long */
     }
 }
 
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 360px) {
     .truncate,
     a {
         width: 100px;
@@ -558,7 +592,7 @@ and artist names when they are too long */
     }
 }
 
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 360px) {
     .artist-name {
         font-size: 0.875rem; /* I want font-size 14px / default browser 16px = gives me .875rem */
     }
@@ -717,22 +751,21 @@ and artist names when they are too long */
 }
 
 
-#add-to-playlist {
-    text-transform: uppercase;
-    font-size: 0.875rem;   /*I want font-size 14px / default browser 16px = 0.875rem */  
-    color: #43484F;
-    letter-spacing: 0.03em;
-    background: #E9F6FD;
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-
-
 /* Makes the playlist dropdown scrollable */ 
 .scrollable-menu {
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
+}
+
+
+@media only screen and (max-width: 560px) {
+    .truncate-playlist-name {
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 
@@ -761,13 +794,25 @@ and artist names when they are too long */
 
 #add-to-playlist {
     text-transform: uppercase;
-    font-size: 0.75rem;   /*I want font-size 14px / default browser 16px = 0.875rem */  
+    font-size: 0.75rem;   /*I want font-size 12px / default browser 16px = 0.75rem */  
     color: #43484F;
     letter-spacing: 0.06em;
     background: #E9F6FD;
     padding-top: 6px;
     padding-bottom: 6px;
     font-weight: 600;
+}
+
+@media only screen and (max-width: 560px) {
+    #add-to-playlist {
+        font-size: 0.55rem;   /*I want font-size 10px / default browser 16px = 0.625rem */  
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #add-to-playlist {
+        font-size: 0.5rem;   /*I want font-size 10px / default browser 16px = 0.625rem */  
+    }
 }
 
 .x-btn {
