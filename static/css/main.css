@@ -4,7 +4,7 @@ body {
     font-weight: 400;   /*400 is the same as normal font weight*/
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    display: flex;
+    display: flex;  /*Used to make sticky footer with flexbox*/
     flex-direction: column;
     min-height: 100vh;
 }
@@ -164,7 +164,7 @@ a {
 }
 
 .entire-loading-message {
-    flex: 1;
+    flex: 1;        /*Used to make sticky footer with flexbox*/
     margin: 0 20px 0 20px;
 }
 
