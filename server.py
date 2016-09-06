@@ -77,11 +77,10 @@ def list():
             pass
         else:   
             #create an instance of the ApiData class in api module passing in token
+            #to query the Spotify API for data
             spotify_api_data = ApiData(token)
             #use the get_Spotify_data method to get dictionary
             spotify_api_dict = spotify_api_data.get_Spotify_data()
-            # use token to query spotify api for data 
-            # spotify_api_dict = get_api_data(token)
             # fill db and model with dbata
             fill.fill_db(spotify_api_dict)
             session['user_id'] = spotify_api_dict['user_id']
