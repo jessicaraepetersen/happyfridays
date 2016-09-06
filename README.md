@@ -10,6 +10,7 @@ Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 * Listen to the entire album
 * Add the album to one of your Spotify playlists
 * Remove an album from view
+
 <br />
 <br />
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
