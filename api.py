@@ -188,7 +188,7 @@ class ApiData(object):
                 for i in range(num_results):
                     current = {}
                     current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
-                    current['user_playlist_name'] = str(user_playlists_results['items'][i]['name'])
+                    current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
                     user_playlist_list_of_dict.append(current)
         self.user_playlist_list_of_dict = user_playlist_list_of_dict
 
@@ -221,21 +221,21 @@ class ApiData(object):
 ############################################################################
 #Helper Functions
 
-# def special_char(results):
-#     '''Turns special characters in unicode into normal character string.'''
+def special_char(results):
+    '''Turns special characters in unicode into normal character string.'''
 
-#     '''This function checks to see if the unicode from the Spotify API can be
-#     turned into a string. If the error UnicodeEncodeError occurs, the function
-#     turns the special characters in the unicode into a string of normal 
-#     characters. This function is used in the code block below when querying the 
-#     Spotify API for the album names and the artist names, which will be displayed 
-#     to the user.'''
+    '''This function checks to see if the unicode from the Spotify API can be
+    turned into a string. If the error UnicodeEncodeError occurs, the function
+    turns the special characters in the unicode into a string of normal 
+    characters. This function is used in the code block below when querying the 
+    Spotify API for the album names and the artist names, which will be displayed 
+    to the user.'''
 
-#     try:
-#         str(results)
-#     except UnicodeEncodeError:
-#         results = unidecode.unidecode(results)
-#     return results
+    try:
+        str(results)
+    except UnicodeEncodeError:
+        results = unidecode.unidecode(results)
+    return results
 
 
 def move_the(results):
