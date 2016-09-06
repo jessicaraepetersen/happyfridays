@@ -15,7 +15,6 @@ Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 Jessica Rae Petersen | [Portfolio](http://jessicaraepetersen.com/) | [LinkedIn](https://www.linkedin.com/in/jessicaraepetersen) | [Twitter](https://twitter.com/jessraepetersen)
 
 <br />
-<br />
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
 
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/custom_list.png)
