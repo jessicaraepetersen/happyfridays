@@ -8,6 +8,6 @@ Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
 
-![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Custom%20List.png)
+![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/custom_list.png)
 
 
