@@ -13,7 +13,7 @@ Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 * Site is fully responsive, including tablet and all mobile device sizes
 
 ###### Contact Me
-Jessica Rae Petersen | [Portfolio](http://jessicaraepetersen.com/) | [LinkedIn](https://www.linkedin.com/in/jessicaraepetersen) | [Twitter](https://twitter.com/jessraepetersen)
+Jessica Rae Petersen | [Email](mailto:jessicaraepetersen@gmail.com) | [Portfolio](http://jessicaraepetersen.com/) | [LinkedIn](https://www.linkedin.com/in/jessicaraepetersen) | [Twitter](https://twitter.com/jessraepetersen)
 
 <br />
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
