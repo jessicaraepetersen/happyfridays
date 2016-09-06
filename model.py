@@ -150,9 +150,6 @@ class Track(db.Model):
 def connect_to_db(app, db_uri=None):
     """Connect the database to Flask app."""
 
-    # Configure to use my PostgreSQL database 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://wdtqwlrhwsvqlv:5jLRu_8qIaISizWBtwYrgSJTyZ@ec2-50-17-227-146.compute-1.amazonaws.com:5432/d6mmoa5tqfeefm'
-
     #Configure to use my PostgreSQL database either via deployed HappyFridays database or locally using this:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgresql:///albums'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
