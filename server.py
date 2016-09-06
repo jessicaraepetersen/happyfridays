@@ -19,7 +19,7 @@ requests.packages.urllib3.disable_warnings()
 app = Flask(__name__)
 
 # Required to use Flask sessions and the debug toolbar
-app.secret_key = "ABC"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "ABC")
 app.jinja_env.auto_reload = True
 
 #grabs my Spotify Client ID & Secret from my secret.sh file
@@ -152,14 +152,13 @@ if __name__ == "__main__":
     # that I invoke the DebugToolbarExtension
     # app.debug = True
 
-    connect_to_db(app)
+    connect_to_db(app, os.environ.get("DATABASE_URL"))
 
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
 
-    # app.run(host="0.0.0.0", port=5000)
-
     # This port works for deployed heroku site:    
     PORT = int(os.environ.get("PORT", 5000))
+    DEBUG = "NO_DEBUG" not in os.environ
 
-    app.run(host="0.0.0.0", port=PORT)
+    app.run(host="0.0.0.0", port=PORT, debug=DEBUG)

@@ -461,15 +461,15 @@ a {
 .sort-options {
     color: #4A8BF8;
     text-transform: none;
-    width: 90px;
     margin-right: 0;
+    letter-spacing: 0;
 }
 
-@media only screen and (max-width: 400px) {
+/*@media only screen and (max-width: 400px) {
     .sort-options {
         width: 80px;
     }
-}
+}*/
 
 .album-cards-padding {
     padding: 0 20px;
@@ -683,7 +683,6 @@ and artist names when they are too long */
     cursor: pointer;
 }
 
-
 .pause-btn {
     background-image: url('../img/icons/pause.svg');
     background-repeat: no-repeat;
@@ -754,14 +753,23 @@ and artist names when they are too long */
 /* Makes the playlist dropdown scrollable */ 
 .scrollable-menu {
     height: auto;
-    max-height: 200px;
+    max-height: 210px;
     overflow-x: hidden;
 }
 
 
 @media only screen and (max-width: 560px) {
     .truncate-playlist-name {
-        width: 100px;
+        width: 90px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .truncate-playlist-name {
+        width: 80px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
