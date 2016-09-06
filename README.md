@@ -10,6 +10,7 @@ Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 * Listen to the entire album
 * Add the album to one of your Spotify playlists
 * Remove an album from view
+* Site is fully responsive, including tablet and all mobile device sizes
 
 ###### Contact Me
 Jessica Rae Petersen | [Portfolio](http://jessicaraepetersen.com/) | [LinkedIn](https://www.linkedin.com/in/jessicaraepetersen) | [Twitter](https://twitter.com/jessraepetersen)
