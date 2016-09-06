@@ -5,6 +5,11 @@ No longer do music fans have to comb through Spotify's new release list to find 
 ###### Tech Stack
 Python, SQLAlchemy, PostgreSQL, Flask, Jinja, Javascript, JQuery, HTML, CSS
 ###### Features
+* Custom list of newly released albums by your favorite artists
+* Sort the list by artist name, album name, or release date
+* Listen to the entire album
+* Add the album to one of your Spotify playlists
+* Remove an album from view
 
 ![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
 
