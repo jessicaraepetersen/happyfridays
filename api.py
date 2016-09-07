@@ -173,7 +173,7 @@ class ApiData(object):
         for i in range(num_results):
             current = {}
             current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
-            current['user_playlist_name'] = str(user_playlists_results['items'][i]['name'])
+            current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
             user_playlist_list_of_dict.append(current)
         #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
         if times_to_offset > 2:
