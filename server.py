@@ -52,8 +52,11 @@ def callback():
     # Grab code from Spotify, exchange code for token and store in session
     code = request.args.get('code')
     token_info = api.get_access_token(code)
+    session['token_info'] = token_info
     token = str(token_info['access_token'])
     session['token'] = token
+    refresh_token = token = str(token_info['refresh_token'])
+    session['refresh_token'] = refresh_token
     return render_template('building.html') 
 
 
@@ -67,7 +70,10 @@ def list():
         return redirect('/') 
     # store token in sesssion
     token = session['token']
-    if token:
+    refresh_token = session['refresh_token']
+    token_info = session['token_info']
+
+    if not api._is_token_expired(token_info):
         sp = spotipy.Spotify(auth=token)
         user_profile_results = sp.current_user() 
         user_id = str(user_profile_results['id'])
@@ -81,11 +87,21 @@ def list():
             spotify_api_data = ApiData(token)
             #use the get_Spotify_data method to get dictionary
             spotify_api_dict = spotify_api_data.get_Spotify_data()
-            # fill db and model with dbata
+            # fill db and model with data
             fill.fill_db(spotify_api_dict)
             session['user_id'] = spotify_api_dict['user_id']
             # alerts the session album list is built
             session[user_id + '_albums_done'] = True
+    else:
+        print '-----TOKEN EXPIRED------'
+        token_info = api._refresh_access_token(refresh_token)
+        print token_info
+        session['token_info'] = token_info
+        token = str(token_info['access_token'])
+        session['token'] = token
+        refresh_token = str(token_info['refresh_token'])
+        session['refresh_token'] = refresh_token
+        print '-----NEW TOKEN------'
 
     user_id = session['user_id']
     # query SQL db for albums to fill album cards and playlists for add to playlist button
@@ -140,7 +156,7 @@ def add_to_playlist():
     #The user selects a playlist to add an album to. This queries the name of the
     # album to include in the flash-like message.
     album = Album.query.filter_by(album_id=album_id).one()
-    album_name = str(album.album_name)
+    album_name = album.album_name
     # return playlist_name and album_name for flash-like message
     return jsonify({'playlist_name': playlist_name, 'album_name': album_name})
 
@@ -160,4 +176,6 @@ if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 5000))
     DEBUG = "NO_DEBUG" not in os.environ
 
-    app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
+    app.run(host="0.0.0.0", port=PORT)
+
+    # app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
