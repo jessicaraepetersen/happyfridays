@@ -350,7 +350,7 @@ a {
 
 .release-and-sort-h2 {
     height: 26px;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto 15px;
     border-bottom: 1px solid rgba(40,46,54,0.12);
 }
@@ -883,15 +883,96 @@ footer {
 }
 
 
+/*-----------------------HappyFridays No Artists Page-----------------------*/
+
+#no-artist-body {
+    background-image: url('../img/img/beyonce-bg@2x.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 0%;
+    background-attachment: fixed;
+}
 
 
+.new-releases-h2-no-sort {
+    color: #636E7C;
+    text-decoration: none;
+    font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
+    font-weight: 600;
+    margin: 0 auto 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    height: 14px;
+    max-width: 390px;
+}   
 
+.album-card-no-artists {
+    max-height: 100px;
+    width: 600px;
+    margin: 0 auto 378px;
+    border-radius: 2px;
+    border: 2px solid #D9E0E8;
+    border-radius: 2px;
+    border-style: dashed;
+    border-color: #D9E0E8;
+    flex: 1;
+}
 
+.no-album-art-div {
+    height: 100px;
+    width: 100px;
+    margin-right: 0;
+    display: inline-block;
+    background: rgba(233,237,243,0.65);
+}
 
+.music-shape {
+    background-image: url('../img/icons/music-shape.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 29px;
+    width: 20px;  
+    margin: 34px 0 0 39px;
+}
 
+.no-album-info {
+    background: rgba(255,255,255,0.40);
+    height: 80px;
+    width: 500px;
+    padding-top: 20px;
+    display: inline-block;
+    margin-right: 0;
+    float: right;
+}
 
+.new-for-you-no-artists {
+    color: #282E36;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 0;
+    letter-spacing: -0.03em;
+}
 
+.no-new-releases {
+    font-size: 1.5rem; /* I want 24px / default browser: 16px = gives me 1.5rem */
+    color: #636E7C;
+    margin: 0 0 9px 27px;
+    font-weight: 400;
+    max-width: 400px;
+}
 
+.follow-more-artists {
+    margin: 0 0 0 27px;
+    max-width: 300px;
+    font-weight: 400;
+    font-size: 1rem; /* I want 16px / default browser: 16px = gives me 1rem */
+    text-decoration: none;
+}
+
+.follow-more-artists a {
+    color: #4A8BF8;
+}
 
 
 

@@ -87,11 +87,16 @@ def list():
             spotify_api_data = ApiData(token)
             #use the get_Spotify_data method to get dictionary
             spotify_api_dict = spotify_api_data.get_Spotify_data()
-            # fill db and model with data
-            fill.fill_db(spotify_api_dict)
-            session['user_id'] = spotify_api_dict['user_id']
-            # alerts the session album list is built
-            session[user_id + '_albums_done'] = True
+            # Checks whether user is following any artists
+            if spotify_api_dict:
+                #if the user is, fill db and model with data
+                fill.fill_db(spotify_api_dict)
+                session['user_id'] = spotify_api_dict['user_id']
+                # alerts the session album list is built
+                session[user_id + '_albums_done'] = True
+            else:
+                #otherwise, alert the user to follow some artists
+                return render_template('no-artists.html')
     else:
         print '-----TOKEN EXPIRED------'
         token_info = api._refresh_access_token(refresh_token)
@@ -160,7 +165,14 @@ def add_to_playlist():
     # return playlist_name and album_name for flash-like message
     return jsonify({'playlist_name': playlist_name, 'album_name': album_name})
 
-   
+
+@app.route('/no-artists')
+def no_artists():
+    """Alerts the user to follow more artists."""
+
+    return render_template('no-artists.html')
+
+
 
 if __name__ == "__main__":
     # Set debug=True here since it has to be True at the point
@@ -176,6 +188,6 @@ if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 5000))
     DEBUG = "NO_DEBUG" not in os.environ
 
-    # app.run(host="0.0.0.0", port=PORT)
+
 
     app.run(host="0.0.0.0", port=PORT, debug=DEBUG)

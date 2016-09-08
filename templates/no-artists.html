@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+        {% block link %}<link href='static/css/bootstrap.css' rel='stylesheet'>{% endblock %}
+    {% block content %} 
+    <body id='no-artist-body'>
+        <div class='happy-fridays-icon'>
+            <a href="/" rel="home" itemprop='url'>
+                <div class='logo'></div>  
+            </a>
+        </div>
+        <h1 class='new-for-you-no-artists'>New & For You</h1>
+        <h2 class='new-releases-h2-no-sort'>New Releases From the Artists You Follow On Spotify</h2>
+        <div class='album-card-no-artists '>
+            <div class='no-album-art-div'>
+                <div class='music-shape'></div>
+            </div>
+            <div class='no-album-info'>
+                <h2 class='no-new-releases'>No new releases found for you.</h2>
+                <h3 class='follow-more-artists'><a href='https://play.spotify.com/user' target='_blank;'>Follow more artists on Spotify!</a></h3>
+            </div>
+        </div>
+        <footer>
+            <p class='footer-text'>BUILT WITH ❤ BY <a href='http://jessicaraepetersen.com/' target='_blank;'>Jessica Rae Petersen</a>. <span class='hide-mobile'>Engineer for <a href='mailto:jessicaraepetersen@gmail.com'>hire</a>.</span></p>
+        </footer>
+        <script src='https://code.jquery.com/jquery.js'></script>
+        <script src='static/js/bootstrap.min.js'></script>
+        <script src='static/js/main.js'></script>
+    {% endblock %}
+

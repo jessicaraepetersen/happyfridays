@@ -15,7 +15,7 @@ scope = 'user-follow-read user-read-private playlist-read-private playlist-read-
 
 # # # # token = util.prompt_for_user_token(username, scope)
 
-token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
+token = spotipy.util.prompt_for_user_token('jessmontalbano', scope=scope)
 
 
 

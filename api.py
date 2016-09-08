@@ -5,13 +5,6 @@ import spotipy.util as util
 from math import ceil
 import unidecode
 
-################################################################################
-# # Authentication and Token Process
-# scope = 'user-follow-read user-read-private playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private'
-# token = spotipy.util.prompt_for_user_token('jas0njames', scope=scope)
-
-################################################################################
-
 #Using a class to primarily for Encapsulation - to keep everything together and 
 #to have access to all my attributes without using only functions and polluting
 #the global variable name space
@@ -20,25 +13,38 @@ class ApiData(object):
     def __init__(self, token):
         self.token = token
 
-    def get_num_results_and_offsets(self):
-        """Returns total number of Spotify new release albums and times to offset."""
-        
-        if self.token: 
-            print "The token exists!"
+    def user_follows_at_least_one_artist(self):
+        """Checks whether Spotify user follows any artists on Spotify."""
+
+        if self.token:
+            print "Token exists!"
             sp = spotipy.Spotify(auth=self.token)
-            new_release_results = sp.new_releases(limit=20)
-            total_available = new_release_results['albums']['total']
-            num_results = len(new_release_results['albums']['items'])
-            times_to_offset = int(ceil(total_available/float(num_results)))
-            self.num_results_and_offset = {'sp': sp, 'num_results': num_results, 'times_to_offset': times_to_offset}
-            self.num_results = self.num_results_and_offset['num_results']
-            self.times_to_offset = self.num_results_and_offset['times_to_offset']
+            user_artist_follow_results = sp.current_user_followed_artists(limit=50)
+            total_artists_user_follows = user_artist_follow_results['artists']['total']
+            self.num_results_and_offset = {'sp': sp}
             self.sp = self.num_results_and_offset['sp']
+            if total_artists_user_follows == 0:
+                return False
+            else:
+                return True
         else:
             print "NO TOKEN"
 
+    def get_num_results_and_offsets(self):
+        """Returns total number of Spotify new release albums and times to offset."""
+    
+        new_release_results = self.sp.new_releases(limit=20)
+        total_available = new_release_results['albums']['total']
+        num_results = len(new_release_results['albums']['items'])
+        times_to_offset = int(ceil(total_available/float(num_results)))
+        self.num_results_and_offset = {'num_results': num_results, 'times_to_offset': times_to_offset}
+        self.num_results = self.num_results_and_offset['num_results']
+        self.times_to_offset = self.num_results_and_offset['times_to_offset']
+
 
     def get_new_release_artist_ids(self):
+        """Gets new release Spotify artist ids."""
+
         new_release_artist_ids = []
         complete_new_release_album_ids = []
         offset = (self.times_to_offset*2)
@@ -102,7 +108,10 @@ class ApiData(object):
             if item[1] in set_of_user_followed_artists_ids:
                 final_album_list.append(item)
         self.final_album_list = final_album_list
-
+        if len(final_album_list) == 0:
+            return False
+        else:
+            return True
 
 
     def get_album_info_list_of_dict(self):
@@ -206,16 +215,21 @@ class ApiData(object):
     def get_Spotify_data(self):
         """Gets a dictionary of all the data needed to fill the database / model."""
 
-        self.get_num_results_and_offsets()
-        self.get_new_release_artist_ids()
-        self.get_first_50_user_artist_ids()
-        self.get_rest_user_artist_ids()
-        self.get_final_album_list_of_tuples()
-        self.get_album_info_list_of_dict()
-        self.get_user_id()
-        self.get_users_playlist_info()
-        self.get_spotify_api_dict()
-        return self.spotify_api_dict
+        if self.user_follows_at_least_one_artist():
+            self.get_num_results_and_offsets()
+            self.get_new_release_artist_ids()
+            self.get_first_50_user_artist_ids()
+            self.get_rest_user_artist_ids()
+            if self.get_final_album_list_of_tuples():
+                self.get_album_info_list_of_dict()
+                self.get_user_id()
+                self.get_users_playlist_info()
+                self.get_spotify_api_dict()
+                return self.spotify_api_dict
+            else:
+                return False
+        else:
+            return False
 
 
 ############################################################################
