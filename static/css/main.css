@@ -366,7 +366,7 @@ a {
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: 500;
-    margin: 0 50px 0 0;
+    margin: 0 100px 0 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     height: 14px;
