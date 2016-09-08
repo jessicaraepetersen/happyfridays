@@ -125,7 +125,7 @@ a {
     text-align: center;
     color: #FFFFFF;
     font-size: .75rem; 
-    font-weight: 600;  /* 600 is medium font-weight */
+    font-weight: 500;  /* 500 is medium font-weight */
     letter-spacing: .06em;
     display: block;
     width: 240px;
@@ -193,7 +193,7 @@ a {
     text-transform: uppercase;
     text-align: center;
     font-size: 0.875rem; /* I want 14px / default browser: 16px = gives me .875rem */
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 auto 43px;
 }
 
@@ -365,12 +365,12 @@ a {
     color: #636E7C;
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
-    font-weight: 600;
-    margin: 0 115px 0 0;
+    font-weight: 500;
+    margin: 0 50px 0 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     height: 14px;
-    max-width: 315px;
+    max-width: 350px;
     display: inline-block;
 }   
 
@@ -397,7 +397,7 @@ a {
 
 .sort-by {
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
-    font-weight: 600;
+    font-weight: 500;
     color: #636E7C;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -808,7 +808,7 @@ and artist names when they are too long */
     background: #E9F6FD;
     padding-top: 6px;
     padding-bottom: 6px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 560px) {
@@ -869,7 +869,7 @@ footer {
     text-decoration: none;
     letter-spacing: 0.06em;
     margin: 17px auto 13px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 580px) {
@@ -898,7 +898,7 @@ footer {
     color: #636E7C;
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 auto 32px;
     text-transform: uppercase;
     letter-spacing: 0.07em;
