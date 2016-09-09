@@ -2,4 +2,5 @@ env
 spotify_secret.sh
 *.cache-*
 *.pyc
+*.DS_Store
 bugs
