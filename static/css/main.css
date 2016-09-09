@@ -350,7 +350,7 @@ a {
 
 .release-and-sort-h2 {
     height: 26px;
-    max-width: 650px;
+    max-width: 600px;
     margin: 0 auto 15px;
     border-bottom: 1px solid rgba(40,46,54,0.12);
 }
@@ -411,6 +411,8 @@ a {
     .sort-by {
         float: right;
         font-weight: 400;
+        width: 175px;
+        margin-right: 2px;
     }
 }
 
@@ -464,12 +466,6 @@ a {
     margin-right: 0;
     letter-spacing: 0;
 }
-
-/*@media only screen and (max-width: 400px) {
-    .sort-options {
-        width: 80px;
-    }
-}*/
 
 .album-cards-padding {
     padding: 0 20px;
