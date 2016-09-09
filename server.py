@@ -96,7 +96,7 @@ def list():
                 session[user_id + '_albums_done'] = True
             else:
                 #otherwise, alert the user to follow some artists
-                return render_template('no-artists.html')
+                return render_template('no-albums.html')
     else:
         print '-----TOKEN EXPIRED------'
         token_info = api._refresh_access_token(refresh_token)
@@ -113,7 +113,12 @@ def list():
     albums = db.session.query(Album).join(Album.artists).join(Album.users_albums).filter_by(user_id=user_id).order_by(Artist.artist_sorted_name).all()
     playlists = db.session.query(Playlist).join(Playlist.users).filter_by(user_id=user_id).order_by(Playlist.playlist_name).all()
 
-    return render_template("list.html", albums=albums, playlists=playlists)  
+    are_there_playlists = True
+    if not playlists:
+        are_there_playlists = False
+
+    return render_template("list.html", albums=albums, playlists=playlists, 
+                                        are_there_playlists=are_there_playlists)  
 
 
 
@@ -166,11 +171,11 @@ def add_to_playlist():
     return jsonify({'playlist_name': playlist_name, 'album_name': album_name})
 
 
-@app.route('/no-artists')
+@app.route('/no-albums')
 def no_artists():
     """Alerts the user to follow more artists."""
 
-    return render_template('no-artists.html')
+    return render_template('no-albums.html')
 
 
 

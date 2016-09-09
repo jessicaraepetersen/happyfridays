@@ -9,13 +9,15 @@
         </div>
         <h1 class='new-for-you-no-artists'>New & For You</h1>
         <h2 class='new-releases-h2-no-sort'>New Releases From the Artists You Follow On Spotify</h2>
-        <div class='album-card-no-artists '>
-            <div class='no-album-art-div'>
-                <div class='music-shape'></div>
-            </div>
-            <div class='no-album-info'>
-                <h2 class='no-new-releases'>No new releases found for you.</h2>
-                <h3 class='follow-more-artists'><a href='https://play.spotify.com/user' target='_blank;'>Follow more artists on Spotify!</a></h3>
+        <div class='footer-div'>
+            <div class='album-card-no-artists'>
+                <div class='no-album-art-div'>
+                    <div class='music-shape'></div>
+                </div>
+                <div class='no-album-info'>
+                    <h2 class='no-new-releases'>No new releases found for you.</h2>
+                    <h3 class='follow-more-artists'><a href='https://play.spotify.com/user' target='_blank;'>Follow more artists on Spotify!</a></h3>
+                </div>
             </div>
         </div>
         <footer>

@@ -173,33 +173,37 @@ class ApiData(object):
 
         #Spotify's max limit of playlist returns is 50
         user_playlists_results = self.sp.user_playlists(self.user_id, limit=50)  
-
         total_available = user_playlists_results['total']
-        num_results = len(user_playlists_results['items'])
-        #Maxiumum offset in Spotify for this endpoint is 100
-        times_to_offset = int(ceil(float(total_available)/float(num_results)) - 1)  
+        #if user doesn't have any playlists
+        if not total_available:
+            #set the list to be empty - so the fill module won't error out
+            self.user_playlist_list_of_dict = []
+        else:
+            num_results = len(user_playlists_results['items'])
+            #Maxiumum offset in Spotify for this endpoint is 100
+            times_to_offset = int(ceil(float(total_available)/float(num_results)) - 1)  
 
-        for i in range(num_results):
-            current = {}
-            current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
-            current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
-            user_playlist_list_of_dict.append(current)
-        #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
-        if times_to_offset > 2:
-                times_to_offset = 2
-        if times_to_offset > 0:
-            #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times       
-            offset = len(range(times_to_offset)) * 50
-            for i in range(times_to_offset):
-                #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
-                user_playlists_results = self.sp.user_playlists(self.user_id, limit=50, offset=offset)
-                num_results = len(user_playlists_results['items'])
-                for i in range(num_results):
-                    current = {}
-                    current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
-                    current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
-                    user_playlist_list_of_dict.append(current)
-        self.user_playlist_list_of_dict = user_playlist_list_of_dict
+            for i in range(num_results):
+                current = {}
+                current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
+                current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
+                user_playlist_list_of_dict.append(current)
+            #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
+            if times_to_offset > 2:
+                    times_to_offset = 2
+            if times_to_offset > 0:
+                #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times       
+                offset = len(range(times_to_offset)) * 50
+                for i in range(times_to_offset):
+                    #Maxiumum offset in Spotify for this endpoint is 100; so maximum loops to offset is 2 times
+                    user_playlists_results = self.sp.user_playlists(self.user_id, limit=50, offset=offset)
+                    num_results = len(user_playlists_results['items'])
+                    for i in range(num_results):
+                        current = {}
+                        current['user_playlist_id'] = str(user_playlists_results['items'][i]['id'])
+                        current['user_playlist_name'] = special_char(user_playlists_results['items'][i]['name'])
+                        user_playlist_list_of_dict.append(current)
+            self.user_playlist_list_of_dict = user_playlist_list_of_dict
 
 
     #############################################################################
@@ -220,6 +224,10 @@ class ApiData(object):
             self.get_new_release_artist_ids()
             self.get_first_50_user_artist_ids()
             self.get_rest_user_artist_ids()
+            #check to see whether there are new release albums by artists the
+            #user follows. If there are, go ahead and fill the database
+            #otherwise, skip that step and return false so the server knows
+            #to render the no albums page
             if self.get_final_album_list_of_tuples():
                 self.get_album_info_list_of_dict()
                 self.get_user_id()

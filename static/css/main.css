@@ -807,6 +807,7 @@ and artist names when they are too long */
     padding-top: 6px;
     padding-bottom: 6px;
     font-weight: 500;
+    height: 19px;
 }
 
 @media only screen and (max-width: 560px) {
@@ -901,19 +902,22 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.07em;
     height: 14px;
-    max-width: 390px;
 }   
+
+.footer-div {
+    min-height: 450px;
+    flex: 1;
+}
 
 .album-card-no-artists {
     max-height: 100px;
     width: 600px;
-    margin: 0 auto 378px;
+    margin: 0 auto;
     border-radius: 2px;
     border: 2px solid #D9E0E8;
     border-radius: 2px;
     border-style: dashed;
     border-color: #D9E0E8;
-    flex: 1;
 }
 
 .no-album-art-div {

@@ -43,7 +43,13 @@
                         <div class='dropdown playlist-dropdown'>
                             <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                             <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
-                                <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
+                                <li><a id='add-to-playlist' href='#'>
+                                    {% if are_there_playlists %}
+                                        Add To A Playlist
+                                    {% else %}
+                                        No Playlists Found
+                                    {% endif %}
+                                    </a></li>
                             {% for playlist in playlists %}                          
                                 <li><a class='playlist-choice truncate-playlist-name' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                             {% endfor %}
