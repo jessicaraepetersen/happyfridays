@@ -366,12 +366,13 @@ a {
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: 500;
-    margin: 0 100px 0 0;
+    margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     height: 14px;
     max-width: 350px;
     display: inline-block;
+    float: left;
 }   
 
 @media only screen and (max-width: 640px) {
@@ -405,6 +406,7 @@ a {
     display: inline-block;
     height: 18px;
     width: 165px;
+    float: right;
 }
 
 @media only screen and (max-width: 640px) {
