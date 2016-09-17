@@ -51,14 +51,16 @@ def callback():
 
     # Grab code from Spotify, exchange code for token and store in session
     code = request.args.get('code')
-    token_info = api.get_access_token(code)
-    session['token_info'] = token_info
-    token = str(token_info['access_token'])
-    session['token'] = token
-    refresh_token = token = str(token_info['refresh_token'])
-    session['refresh_token'] = refresh_token
-    return render_template('building.html') 
-
+    if code:
+        token_info = api.get_access_token(code)
+        session['token_info'] = token_info
+        token = str(token_info['access_token'])
+        session['token'] = token
+        refresh_token = token = str(token_info['refresh_token'])
+        session['refresh_token'] = refresh_token
+        return render_template('building.html') 
+    else:
+        return redirect('/')
 
 
 @app.route('/list')
