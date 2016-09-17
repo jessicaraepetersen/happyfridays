@@ -892,26 +892,39 @@ footer {
     background-attachment: fixed;
 }
 
+@media only screen and (max-width: 640px) {
+    #bottom-margin-h1 {
+        margin-bottom: 20px;
+    }
+}
 
 .new-releases-h2-no-sort {
     color: #636E7C;
     text-decoration: none;
     font-size: .75rem; /* I want 12px / default browser: 16px = gives me .75rem */
     font-weight: 500;
-    margin: 0 auto 32px;
+    margin: 0 auto 30px;
     text-transform: uppercase;
     letter-spacing: 0.07em;
     height: 14px;
-}   
+}
+
+@media only screen and (max-width: 380px) {
+    .on-spotify-hide {
+        display: none;
+    }
+}
 
 .footer-div {
-    min-height: 450px;
+    min-height: 200px;
+    padding: 0 20px;
     flex: 1;
 }
 
 .album-card-no-artists {
-    max-height: 100px;
-    width: 600px;
+    background: rgba(255,255,255,0.40);
+    height: 100px;
+    max-width: 600px;
     margin: 0 auto;
     border-radius: 2px;
     border: 2px solid #D9E0E8;
@@ -920,12 +933,28 @@ footer {
     border-color: #D9E0E8;
 }
 
+@media only screen and (max-width: 640px) {
+    .album-card-no-artists {
+        height: 70px;
+        margin: 0 auto 10px;
+        max-width: 480px;
+    }
+}
+
 .no-album-art-div {
     height: 100px;
     width: 100px;
     margin-right: 0;
     display: inline-block;
     background: rgba(233,237,243,0.65);
+    float: left;
+}
+
+@media only screen and (max-width: 640px) {
+    .no-album-art-div {
+        height: 70px;
+        max-width: 70px;
+    }
 }
 
 .music-shape {
@@ -934,26 +963,28 @@ footer {
     background-position: center;
     height: 29px;
     width: 20px;  
-    margin: 34px 0 0 39px;
+    margin: 35% auto;
+}
+
+@media only screen and (max-width: 640px) {
+    .music-shape {
+        margin: 30% auto;
+    }
 }
 
 .no-album-info {
-    background: rgba(255,255,255,0.40);
-    height: 80px;
-    width: 500px;
+    max-height: 80px;
+    max-width: 500px;
     padding-top: 20px;
     display: inline-block;
     margin-right: 0;
-    float: right;
+    float: left;
 }
 
-.new-for-you-no-artists {
-    color: #282E36;
-    text-align: center;
-    font-weight: 400;
-    margin-bottom: 20px;
-    margin-top: 0;
-    letter-spacing: -0.03em;
+@media only screen and (max-width: 640px) {
+    .no-album-info {
+        padding-top: 17px;
+    }
 }
 
 .no-new-releases {
@@ -964,6 +995,20 @@ footer {
     max-width: 400px;
 }
 
+@media only screen and (max-width: 640px) {
+    .no-new-releases {
+        font-size: 1rem; /* I want 16px / default browser: 16px = gives me 1rem */
+        margin: 0 0 4px 15px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .no-new-releases {
+        font-size: .8125rem; /* I want 13px / default browser: 16px = gives me .8125rem */
+        margin: 0 0 4px 7px;
+    }
+}
+
 .follow-more-artists {
     margin: 0 0 0 27px;
     max-width: 300px;
@@ -972,10 +1017,23 @@ footer {
     text-decoration: none;
 }
 
+@media only screen and (max-width: 640px) {
+    .follow-more-artists {
+        font-size: 0.8125rem; /* I want font-size 13px / default browser 16px = gives me 0.8125rem */
+        margin: 0 0 0 15px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .follow-more-artists {
+        font-size: .6875rem; /* I want 11px / default browser: 16px = gives me .6875rem */
+        margin: 0 0 4px 7px;
+    }
+}
+
 .follow-more-artists a {
     color: #4A8BF8;
 }
-
 
 
 
