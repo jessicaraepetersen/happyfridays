@@ -126,18 +126,17 @@ def list():
 
 @app.route('/clear')
 def clear():
-    """Clears SQL tables once user is done ."""
+    """Clears flask session and SQL tables once user is done ."""
 
-
+    session.clear()
     db.session.query(Track).delete()
     db.session.query(Playlist).delete()
     db.session.query(UserAlbum).delete()
     db.session.query(Album).delete() 
     db.session.query(Artist).delete() 
     db.session.query(User).delete() 
-
     db.session.commit()
-    print "-------User's data cleared from DB----------"
+    print "------User's session & data cleared from DB------"
     return redirect('/') 
 
 
