@@ -53,6 +53,7 @@ function showFlashMessage(result) {
     playlist_name = result['playlist_name']
 
     album_name = truncate_album_name(album_name);
+    playlist_name = truncate_playlist_name(playlist_name);
 
     $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name + '.')
     $("#album-added-box").fadeIn(250);
@@ -77,8 +78,14 @@ $('.playlist-choice').click(addAlbumToPlaylist);
 
 
 function truncate_album_name(album_name) {
-    if (album_name.length > 26) {
-        return album_name.slice(0, 27).concat('...');
+    if (album_name.length > 19) {
+        return album_name.slice(0, 19) + '...';
+    }
+}
+
+function truncate_playlist_name(playlist_name) {
+    if (playlist_name.length > 15) {
+        return playlist_name.slice(0, 13) + '...';
     }
 }
 

@@ -791,13 +791,28 @@ and artist names when they are too long */
     z-index: 1000;
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 660px) {
     #album-added-box {
-        max-width: 520px; 
+        max-width: 500px;
+        width: inherit; 
     }
 }
 
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 515px) {
+    #album-added-box {
+        max-width: 400px;
+        width: inherit; 
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    #album-added-box {
+        max-width: 350px;
+        width: inherit; 
+    }
+}
+
+@media only screen and (max-width: 365px) {
     #album-added-box {
         max-width: 280px;
         min-height: 35px; 
@@ -814,7 +829,7 @@ and artist names when they are too long */
     overflow: hidden;
 }
 
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 440px) {
     #album-added-message {
         font-size: .7rem;
         margin: 5px auto;
