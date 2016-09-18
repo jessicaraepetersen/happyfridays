@@ -52,7 +52,9 @@ function showFlashMessage(result) {
     album_name = result['album_name']
     playlist_name = result['playlist_name']
 
-    $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name)
+    album_name = truncate_album_name(album_name);
+
+    $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name + '.')
     $("#album-added-box").fadeIn(250);
     setTimeout(function() {$('#album-added-box').fadeOut(250);}, 3000);         
 }
@@ -71,6 +73,14 @@ function addAlbumToPlaylist(evt) {
 }
 
 $('.playlist-choice').click(addAlbumToPlaylist);
+
+
+
+function truncate_album_name(album_name) {
+    if (album_name.length > 26) {
+        return album_name.slice(0, 27).concat('...');
+    }
+}
 
 
 

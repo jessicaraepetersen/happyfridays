@@ -780,7 +780,8 @@ and artist names when they are too long */
 
 #album-added-box {
     height: 40px;
-    width: 540px;
+    width: 520px;
+    padding: 0 10px;
     background-color: #4A8BF8;
     border-radius: 4px;
     position: fixed;
@@ -790,13 +791,38 @@ and artist names when they are too long */
     z-index: 1000;
 }
 
+@media only screen and (max-width: 560px) {
+    #album-added-box {
+        max-width: 520px; 
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    #album-added-box {
+        max-width: 280px;
+        min-height: 35px; 
+    }
+}
+
 #album-added-message {
     color: #FFFFFF;
     font-size: .938rem;    /*I want font-size 15px / default browser 16px = 0.938rem */ 
     text-align: center;
     margin: 10px auto 0;
+    max-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
+@media only screen and (max-width: 325px) {
+    #album-added-message {
+        font-size: .7rem;
+        margin: 5px auto;
+        white-space: normal;
+        overflow: visible;
+        line-height: 1.3; 
+    }
+}
 
 #add-to-playlist {
     text-transform: uppercase;
