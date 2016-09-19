@@ -5,6 +5,7 @@ No longer do music fans have to comb through Spotify's new release list to find 
 ###### Tech Stack
 Python, SQLAlchemy, Flask, Jinja, Javascript, JQuery, HTML, CSS, Bootstrap, OAuth 2.0, Spotify API, Python unittests
 ###### Features
+* User logs in to their Spotify account and authorizes HappyFridays via OAuth2
 * Custom list of newly released albums by your favorite artists
 * Sort the list by artist name, album name, or release date
 * Listen to the entire album
