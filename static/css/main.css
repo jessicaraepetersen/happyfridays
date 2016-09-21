@@ -943,6 +943,12 @@ footer {
     }
 }
 
+@media only screen and (max-width: 325px) {
+    #bottom-margin-h1 {
+        margin-bottom: 15px;
+    }
+}
+
 .new-releases-h2-no-sort {
     color: #636E7C;
     text-decoration: none;
@@ -954,9 +960,16 @@ footer {
     height: 14px;
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 430px) {
     .on-spotify-hide {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    .new-releases-h2-no-sort {
+        font-size: .625rem; /* I want 10px / default browser: 16px = gives me .625rem */
+        margin: 0 auto 20px;
     }
 }
 
@@ -1049,7 +1062,7 @@ footer {
 
 @media only screen and (max-width: 380px) {
     .no-new-releases {
-        font-size: .8125rem; /* I want 13px / default browser: 16px = gives me .8125rem */
+        font-size: .8rem; /* I want 12.8px / default browser: 16px = gives me .8rem */
         margin: 0 0 4px 7px;
     }
 }
