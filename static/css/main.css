@@ -389,10 +389,17 @@ a {
     }
 }
 
-
 @media only screen and (max-width: 360px) {
     .new-releases {
         display: none;
+    }
+}
+
+
+@media only screen and (max-width: 415px) {
+    #sort-dropdown {
+        width: 154px;
+        left: -25px;
     }
 }
 
@@ -467,6 +474,15 @@ a {
     text-transform: none;
     margin-right: 0;
     letter-spacing: 0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 425px) {
+    .sort-options {
+        padding: 14px 30px;
+        height: 16px;
+        font-size: .8125rem; /*13px font size*/
+    }
 }
 
 .album-cards-padding {
@@ -569,7 +585,7 @@ and artist names when they are too long */
 @media only screen and (max-width: 360px) {
     .truncate,
     a {
-        width: 100px;
+        width: 93px;
     }
 }
 
@@ -755,10 +771,9 @@ and artist names when they are too long */
     overflow-x: hidden;
 }
 
-
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 700px) {
     .truncate-playlist-name {
-        width: 90px;
+        width: 130px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -767,10 +782,16 @@ and artist names when they are too long */
 
 @media only screen and (max-width: 400px) {
     .truncate-playlist-name {
-        width: 80px;
+        width: 89px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .playlist-choice {
+        height: 20px;
     }
 }
 
@@ -857,13 +878,17 @@ and artist names when they are too long */
 
 @media only screen and (max-width: 560px) {
     #add-to-playlist {
-        font-size: 0.55rem;   /*I want font-size 10px / default browser 16px = 0.625rem */  
+        font-size: 0.65rem;    
+        text-align: center;
     }
 }
 
 @media only screen and (max-width: 400px) {
     #add-to-playlist {
-        font-size: 0.5rem;   /*I want font-size 10px / default browser 16px = 0.625rem */  
+        font-size: 0.5rem;   /*I want font-size 10px / default browser 16px = 0.625rem */ 
+        height: 12px;
+        padding-left: 0;
+        padding-right: 0; 
     }
 }
 

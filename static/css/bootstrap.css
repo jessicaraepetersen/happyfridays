@@ -53,7 +53,7 @@
 
 @media only screen and (max-width: 560px) {
   ul.dropdown-menu.dropdown-style-menu {
-    width: 100px;
+    width: 105px;
   }
 }
 
@@ -61,7 +61,7 @@
   .dropdown-menu {
     width: 90px;
     font-size: 11px;
-
+    padding-top: 5px;
   }
 }
 
@@ -109,12 +109,7 @@
 @media only screen and (max-width: 560px) {
   .dropdown-menu > li > a {
     padding: 4px 10px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .dropdown-menu > li > a {
-    padding: 4px 6px;
+    height: 20px;
   }
 }
 
