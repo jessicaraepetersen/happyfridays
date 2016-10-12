@@ -3,7 +3,8 @@
 No longer do music fans have to comb through Spotify's new release list to find that music gem. [HappyFridays](https://www.happyfridays.co) will do it for you! Every Friday, when new music is released, a user can see a list of new albums by their favorite artists. The app displays the new release albums as a list and allows the user to play the album or add the album to one of their own Spotify playlists.
 
 ###### Tech Stack
-Python, SQLAlchemy, Flask, Jinja, Javascript, JQuery, HTML, CSS, Bootstrap, OAuth 2.0, Spotify API, Python unittests
+Javascript, HTML, CSS, Flickr API
+
 ###### Features
 * Log in to your Spotify account and authorize HappyFridays via OAuth2
 * Custom list of newly released albums by your favorite artists
