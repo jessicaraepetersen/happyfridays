@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
         {% block link %}<link href='static/css/bootstrap.css' rel='stylesheet'>{% endblock %}
-    {% block content %} 
+    {% block content %}
     <body id='list-body'>
         <div class='' id='album-added-box' hidden><p id='album-added-message'></p></div>
         <div class='happy-fridays-icon'>
             <a href="/" rel="home" itemprop='url'>
-                <div class='logo'></div>  
+                <div class='logo'></div>
             </a>
         </div>
         <h1 class='new-for-you-h1'>New & For You</h1>
@@ -15,7 +15,7 @@
                 <div class='sort-by'><span>Sort By: <span>
                     <div class='dropdown dropdown-style'>
                         <div class='sort-dropdown dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'><span class='sort-color'>Artist Name</span><div class='caret'></div></div>
-                        <ul id='sort-dropdown' class='dropdown-menu dropdown-style-menu' aria-labelledby='dropdownMenu1'>    
+                        <ul id='sort-dropdown' class='dropdown-menu dropdown-style-menu' aria-labelledby='dropdownMenu1'>
                             <li><a id='sort-by-artist-name' class='sort-options' href='#'> Artist Name</a></li>
                             <li><a id='sort-by-album-name' class='sort-options' href='#'> Album Name</a></li>
                             <li><a id='sort-by-release-date' class='sort-options' href='#'> Release Date</a></li>
@@ -42,7 +42,7 @@
                         </div>
                         <div class='dropdown playlist-dropdown'>
                             <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
-                            <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
+                            <ul id='playlist-dropdown' class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
                                 <li><a id='add-to-playlist' href='#'>
                                     {% if are_there_playlists %}
                                         Add To A Playlist
@@ -50,7 +50,7 @@
                                         No Playlists Found
                                     {% endif %}
                                     </a></li>
-                            {% for playlist in playlists %}                          
+                            {% for playlist in playlists %}
                                 <li><a class='playlist-choice truncate-playlist-name' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                             {% endfor %}
                             </ul>
@@ -81,7 +81,7 @@
                             <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                             <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
                                 <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
-                            {% for playlist in playlists %}                          
+                            {% for playlist in playlists %}
                                 <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                             {% endfor %}
                             </ul>
@@ -112,7 +112,7 @@
                             <div class='plus-btn dropdown-toggle' id='dropdownMenu3' data-album-id='{{ album.album_id }}' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'></div>
                             <ul class='dropdown-menu scrollable-menu' aria-labelledby='dropdownMenu3'>
                                 <li><a id='add-to-playlist' href='#'>Add To A Playlist</a></li>
-                            {% for playlist in playlists %}                          
+                            {% for playlist in playlists %}
                                 <li><a class='playlist-choice' data-album-id='{{ album.album_id }}' data-playlist-id='{{ playlist.playlist_id }}' href='#'>{{ playlist.playlist_name }}</a></li>
                             {% endfor %}
                             </ul>

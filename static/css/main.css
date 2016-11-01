@@ -375,6 +375,11 @@ a {
     float: left;
 }
 
+#sort-dropdown {
+    top: 20px;
+    left: -18px;
+}
+
 @media only screen and (max-width: 640px) {
     .from-the-artists-hide {
         display: none;
@@ -399,7 +404,7 @@ a {
 @media only screen and (max-width: 415px) {
     #sort-dropdown {
         width: 154px;
-        left: -25px;
+        left: -35px;
     }
 }
 
@@ -479,8 +484,6 @@ a {
 
 @media only screen and (max-width: 425px) {
     .sort-options {
-        padding: 14px 30px;
-        height: 16px;
         font-size: .8125rem; /*13px font size*/
     }
 }
@@ -763,6 +766,10 @@ and artist names when they are too long */
     cursor: pointer;
 }
 
+#playlist-dropdown {
+    top: 100%;
+    left: 0;
+}
 
 /* Makes the playlist dropdown scrollable */
 .scrollable-menu {
