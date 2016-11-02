@@ -794,7 +794,7 @@ and artist names when they are too long */
 
 @media only screen and (max-width: 700px) {
     .truncate-playlist-name {
-        width: 107px;
+        width: 107  px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
