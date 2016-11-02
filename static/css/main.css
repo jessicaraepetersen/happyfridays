@@ -803,7 +803,7 @@ and artist names when they are too long */
 
 @media only screen and (max-width: 400px) {
     .truncate-playlist-name {
-        width: 89px;
+        width: 100px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -838,6 +838,7 @@ and artist names when they are too long */
     #album-added-box {
         max-width: 400px;
         margin: 20px 0 0 -215px;
+    }
 }
 
 @media only screen and (max-width: 440px) {
