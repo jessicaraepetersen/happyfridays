@@ -7,7 +7,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, User, Artist, Album, UserAlbum, Playlist, Track
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 import spotipy.util as util
-import spotipy 
+import spotipy
 from api import ApiData
 
 
@@ -34,7 +34,7 @@ api = SpotifyOAuth(client_id, client_secret, redirect_uri, scope=scope)
 client_credentials_manager = SpotifyClientCredentials()
 
 
-@app.route('/') 
+@app.route('/')
 def index():
     """Homepage where user clicks to auth their Spotify account."""
     # uses Spotipy method to construct the auth url
@@ -58,7 +58,7 @@ def callback():
         session['token'] = token
         refresh_token = token = str(token_info['refresh_token'])
         session['refresh_token'] = refresh_token
-        return render_template('building.html') 
+        return render_template('building.html')
     else:
         return redirect('/')
 
@@ -69,7 +69,7 @@ def list():
 
     # if no token, redirect to home
     if 'token' not in session:
-        return redirect('/') 
+        return redirect('/')
     # store token in sesssion
     token = session['token']
     refresh_token = session['refresh_token']
@@ -77,13 +77,13 @@ def list():
 
     if not api._is_token_expired(token_info):
         sp = spotipy.Spotify(auth=token)
-        user_profile_results = sp.current_user() 
+        user_profile_results = sp.current_user()
         user_id = str(user_profile_results['id'])
         # if album list is built, prevents rebuilding on refresh for user; however,
         # list will rebuild for new / different users even if built for others
         if session.get(user_id + '_albums_done'):
             pass
-        else:   
+        else:
             #create an instance of the ApiData class in api module passing in token
             #to query the Spotify API for data
             spotify_api_data = ApiData(token)
@@ -119,8 +119,8 @@ def list():
     if not playlists:
         are_there_playlists = False
 
-    return render_template("list.html", albums=albums, playlists=playlists, 
-                                        are_there_playlists=are_there_playlists)  
+    return render_template("list.html", albums=albums, playlists=playlists,
+                                        are_there_playlists=are_there_playlists)
 
 
 
@@ -132,12 +132,12 @@ def clear():
     db.session.query(Track).delete()
     db.session.query(Playlist).delete()
     db.session.query(UserAlbum).delete()
-    db.session.query(Album).delete() 
-    db.session.query(Artist).delete() 
-    db.session.query(User).delete() 
+    db.session.query(Album).delete()
+    db.session.query(Artist).delete()
+    db.session.query(User).delete()
     db.session.commit()
     print "------User's session & data cleared from DB------"
-    return redirect('/') 
+    return redirect('/')
 
 
 
@@ -149,7 +149,8 @@ def add_to_playlist():
     user_id = session['user_id']
     playlist_id = request.form.get('playlist_id')
     album_id = request.form.get('album_id')
-    
+
+
     # Query SQL db for track URIs, which are needed to add entire album to playlist
     tracks = db.session.query(Track).join(Track.albums).filter_by(album_id=album_id).all()
     list_of_track_uris = []
@@ -190,7 +191,7 @@ if __name__ == "__main__":
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
 
-    # This port works for deployed heroku site:    
+    # This port works for deployed heroku site:
     PORT = int(os.environ.get("PORT", 5000))
     DEBUG = "NO_DEBUG" not in os.environ
 

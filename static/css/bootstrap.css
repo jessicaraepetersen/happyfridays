@@ -92,7 +92,6 @@
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 12px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
@@ -102,7 +101,6 @@
 
 @media only screen and (max-width: 560px) {
   .dropdown-menu > li > a {
-    padding: 20px 10px;
     height: 25px;
   }
 }

@@ -480,6 +480,7 @@ a {
     margin-right: 0;
     letter-spacing: 0;
     text-align: center;
+    padding: 12px 20px;
 }
 
 @media only screen and (max-width: 425px) {
@@ -776,6 +777,10 @@ and artist names when they are too long */
     height: auto;
     max-height: 210px;
     overflow-x: hidden;
+}
+
+.playlist-choice {
+    padding: 5px 20px;
 }
 
 @media only screen and (max-width: 700px) {
