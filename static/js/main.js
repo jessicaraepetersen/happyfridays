@@ -55,7 +55,7 @@ function showFlashMessage(result) {
     album_name = truncate(album_name, 19);
     playlist_name = truncate(playlist_name, 13);
 
-    $('#album-added-message').html(album_name + ' was added to your playlist ' + playlist_name + '.')
+    $('#album-added-message').html(album_name + ' was added to ' + playlist_name + '.')
     $("#album-added-box").fadeIn(250);
     setTimeout(function() {$('#album-added-box').fadeOut(250);}, 3000);
 }
