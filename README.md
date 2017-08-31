@@ -17,9 +17,8 @@ Python, JavaScript, jQuery, PostgreSQL, Flask, Spotify API, HTML, Jinja, CSS
 ###### Contact Me
 Jessica Rae Petersen | [Email](mailto:jessicaraepetersen@gmail.com) | [Portfolio](http://jessicaraepetersen.com/) | [LinkedIn](https://www.linkedin.com/in/jessicaraepetersen) | [Twitter](https://twitter.com/jessraepetersen)
 
-<br />
-![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
+![](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/Home%20Page.png) 
 
-![alt text](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/custom_list.png)
+![](https://github.com/jessicaraepetersen/happyfridays/blob/master/static/img/readme_pics/custom_list.png)
 
 
